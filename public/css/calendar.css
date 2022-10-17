@@ -1,0 +1,111 @@
+.calendar {
+    box-sizing: border-box;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 300px;
+    user-select: none;
+}
+
+ul {
+    list-style-type: none;
+   
+}
+    
+.month {
+    padding: 60px 10px;
+    width: 300px;
+    margin-bottom: -50px;
+
+    background-color: #35403e;
+    text-align: center;
+}
+
+.month .prev {
+    float: left;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.month .next {
+    float: right;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.month ul {
+   
+    padding: 0;
+    margin-top: -50px;
+    margin-bottom: -20px;
+}
+
+.month ul li {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 900;
+}
+
+.weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color: #ddd;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 12.6%;
+    color: #666;
+    text-align: center;
+}
+
+.days {
+    padding: 10px 0;
+    background-color: #eee;
+    margin: 0;
+}
+
+.days li {
+    display: inline-block;
+    width: 13.6%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: green;
+}
+
+/* lets add some active class  for current date*/
+.active{
+    padding: 5px;
+    background-color: #35403e;
+    color: white;
+}
+/*  TO make it responsive lets add some media queries */
+
+/* @media screen and (max-width:720px) {
+    .weekdays li,
+    .days li {
+        width: 13.1%;
+    }
+}
+
+@media screen and (max-width:420px) {
+    .weekdays li,
+    .days li {
+        width: 12.1%;
+    }
+    .days li .active{
+        padding: 2px;
+    }
+}
+
+@media screen and (max-width:290px) {
+    .weekdays li,
+    .days li {
+        width: 12.2%;
+    }
+}
+*/
