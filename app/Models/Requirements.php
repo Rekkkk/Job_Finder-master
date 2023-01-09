@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Applicant extends Model
+class Requirements extends Model
 {
     use HasFactory;
-                
-    protected $table = 'applicant';
+
+    protected $table = 'requirements';
 
     protected $fillable = [
         'user_id',
         'job_id',
-        'is_accepted',
-        'is_decline'
+        'pdf_description',
+        'pdf'
     ];  
 }

@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Job;
 use App\Models\Applicant;
+use App\Models\Requirements;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use DB;
+
+use Mail;
+use App\Mail\ApplicantNotification;
+use App\Mail\OrderShipped;
 
 
 
@@ -24,7 +30,6 @@ class JobController extends Controller
 
     public function viewJob(Job $job){
       
-
         if($job->user_id === Auth::user()->user_id){
             
             $job = Job::with('user')->where('job_id', $job->job_id)->first();
@@ -33,12 +38,98 @@ class JobController extends Controller
 
         }else{
             $job = Job::find($job->job_id);
-            return view('/authpages/view-job', compact('job'));
+            $isSummited = false;
+            $status;
+
+            foreach($job->user as $applicant){
+                if($applicant->user_id == Auth::user()->user_id){
+                    $isSummited = true;
+                    if($applicant->pivot->is_decline == 1){
+                        $status = "Decline";
+                    }
+                    if($applicant->pivot->is_accepted == 0 && $applicant->pivot->is_decline == 0){
+                        $status = "Pending";
+                    }
+                    if($applicant->pivot->is_accepted == 1){
+                        $status = "Accepted";
+                    }
+                    
+                }
+            }
+
+            if($isSummited == false){
+                $status = "Unsubmit";
+            }
+            
+            return view('/authpages/view-job', compact('job', 'status'));
         }
 
     }
 
-    
+    public function viewApplicant($user, Job $job){
+
+        $applicant = User::where('user_id', $user)->first();
+
+        $requirements = Requirements::where('job_id', $job->job_id)
+                                ->where('user_id', $user)
+                                ->get();
+
+        return view('/authpages/requirements-list', compact('applicant', 'requirements'));
+
+    }
+
+    public function acceptApplicant($user, Job $job){
+
+        $applicant = User::where('user_id', $user)->first();
+        $job = Job::where('job_id', $job->job_id)->first();
+
+        $mailData = [
+            "name" => $applicant->name,
+            "job-title" => $job->job_title,
+            "job-company" => $job->company_name,
+            "job-address" => $job->company_address,
+            "status" => "accepted"
+        ];
+
+        Mail::to($applicant->email)->send(new ApplicantNotification($mailData));
+
+        $data = DB::table('applicant')
+                    ->where('job_id', $job->job_id)
+                    ->where('user_id', $user)
+                    ->update(['is_accepted' => 1]);
+
+        Alert::success('Success','You Accept Applicant Successfully !');
+
+        return back();
+
+    }
+
+    public function declineApplicant($user, Job $job){
+
+        $applicant = User::where('user_id', $user)->first();
+        $job = Job::where('job_id', $job->job_id)->first();
+
+        $mailData = [
+            "name" => $applicant->name,
+            "job-title" => $job->job_title,
+            "job-company" => $job->company_name,
+            "job-address" => $job->company_address,
+            "status" => "declined"
+        ];
+
+        $data = DB::table('applicant')
+                    ->where('job_id', $job->job_id)
+                    ->where('user_id', $user)
+                    ->update(['is_decline' => 1]);
+
+        Alert::success('Success','You Decline Applicant Successfully !');
+
+        Mail::to($applicant->email)->send(new ApplicantNotification($mailData));
+
+        return back();
+
+    }
+
     public function viewMyPostJob(Job $job){
 
         $job = Job::find($job->job_id);
@@ -49,19 +140,39 @@ class JobController extends Controller
 
     public function submitResume(Request $request, Job $job){
 
+        $applicants = Applicant::where('job_id', $job->job_id)->get();
 
+        foreach($applicants as $applicant){
+            if($applicant->user_id == Auth::user()->user_id){
+                Alert::html('Error','You Submit Application Already !', 'error');
+                return back();
+            }
+        }
 
+        Applicant::create([
+            'user_id' => Auth::user()->user_id,
+            'job_id' => $job->job_id
+        ]);
 
-        // if(Applicant::find(Auth::user()->user_id) )
-
-        $pdf = new Applicant;
-        $path = $request->file('pdf_file')->store('/', ['disk' =>   'pdf']);
+        $pdf = new Requirements;
+        $path = $request->file('resume')->store('/', ['disk' =>   'pdf']);
         $pdf->pdf = $path;
+        $pdf->pdf_description = "Resume";
         $pdf->job_id = $job->job_id;
         $pdf->user_id = Auth::user()->user_id;
         $pdf->save();
 
-        Alert::success('Success','You Submit Resume !');
+        foreach ($request->file('requirements') as $files) {
+            $requirements = new Requirements;
+            $path = $files->store('/', ['disk' =>   'pdf']);
+            $requirements->pdf = $path;
+            $requirements->pdf_description = "Other Requirements";
+            $requirements->job_id = $job->job_id;
+            $requirements->user_id = Auth::user()->user_id;
+            $requirements->save();
+        }
+
+        Alert::success('Success','You Submit Application Success !');
 
         return back();
 

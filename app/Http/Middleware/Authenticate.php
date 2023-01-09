@@ -18,8 +18,9 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
 
-        if(!Auth::check() && ($request->route()->getPrefix() == 'logged-in' )){
-            return redirect()->route('login');
+        
+        if($request->route()->getPrefix() == 'logged-in'){
+            return redirect()->route('login.page');
         }
         // if (! $request->expectsJson()) {
         //     return route('login');

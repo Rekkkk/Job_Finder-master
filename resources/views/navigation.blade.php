@@ -49,7 +49,7 @@
         <!--Grid row-->
         <div class="row mt-4">
           <div class="col-lg-12 col-md-12 mb-4 mb-md-0">
-            <h5 class="text-uppercase mb-4">JOB FINDER PHILPPINES</h5>
+            <h5 class="text-uppercase mb-4">JOB FINDER PHILIPPINES</h5>
         </div>
 
         </div>

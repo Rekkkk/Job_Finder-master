@@ -2,7 +2,7 @@
 
 @section('content')
 @include('sweetalert::alert')
-    <div class="container-fluid p-5">
+    <div class="container-fluid p-4">
         <div class="row">
             <div class="col-lg-12">
                 <h1><b>Account Details</b></h1>

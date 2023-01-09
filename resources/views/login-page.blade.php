@@ -22,7 +22,7 @@
                     <input type="email" id="typeEmailX-2" name="email" class="form-control form-control" placeholder="Email" value="{{ old('email') }}"/>
                     <label class="form-label h6 mt-1" for="typeEmailX-2"><b>Email</b></label>
                   </div>
-                  <div class="form-outline mb-4">
+                  <div class="form-outline mb-2">
                     <input type="password" id="typePasswordX-2" name="password" class="form-control form-control password" placeholder="Password"/>
                     <label class="form-label h6 mt-1" for="typePasswordX-2"><b>Password</b></label>
                   </div>
@@ -31,10 +31,9 @@
                     <p style="margin-bottom: -1px; "class="p-1"> Show password</p>
                 </div> <br>
                   <button class="btn btn-success btn-lg btn-block" type="submit">Login</button>
-                
-              </form>
-  
-
+                  
+              </form><br>
+              <a href="{{ route('register.page') }}" class="h6 mt-4">Dont have an account? Register</a>  
             </div>
           </div>
         </div>

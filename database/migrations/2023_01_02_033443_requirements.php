@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('applicant', function (Blueprint $table) {
+        Schema::create('requirements', function (Blueprint $table) {
             $table->unsignedBigInteger('job_id');
             $table->foreign('job_id')->references('job_id')->on('job')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('user_id')->on('users');
-            $table->boolean('is_accepted')->default(0);
-            $table->boolean('is_decline')->default(0);
+            $table->string('pdf_description');
+            $table->string('pdf');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExist('applicant');
+        Schema::dropIfExist('requirements');
     }
 };

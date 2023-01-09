@@ -25,6 +25,7 @@ class AuthController extends Controller
     }
     
     public function login(Request $request){
+
         $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -37,12 +38,18 @@ class AuthController extends Controller
             if(Auth::user()->userStatus->is_disable == 1){
                 Auth::logout();
                 return back()->withErrors(['msg' => 'Your account has banned']);
-
             }
-            if(Auth::user()->userStatus->is_suspend == 1){
-  
-                return back()->withErrors(['msg' => 'Your account are temporary ban until ' . Carbon::parse(Auth::user()->userStatus->suspend_end)->format('F d, Y')]);
-                Auth::logout();
+            elseif(Auth::user()->userStatus->is_suspend == 1){
+
+                if(Auth::user()->userStatus->suspend_end < Carbon::now()){
+                    UserStatus::where('user_id', '=',  Auth::user()->user_id)
+                    ->update(['is_suspend' => 0,'suspend_end' => null]);
+                     return redirect()->route('job.list');
+                }else{
+                    return back()->withErrors(['msg' => 'Your account are temporary ban until ' . Carbon::parse(Auth::user()->userStatus->suspend_end)->format('F d, Y')]);
+                    Auth::logout();
+                }
+               
             }else{
                 return redirect()->route('job.list');
             }
@@ -89,15 +96,22 @@ class AuthController extends Controller
         if(Auth::check()){
 
             if(Auth::user()->user_role == 1){
-                $allJobs = Job::all();
 
-                return redirect()->route('report.post.management');
+                return redirect()->route('dashboard');
 
             }else{
                 $allJobs = Job::where('unlisted', 0)->get();
                 return view('/authpages/job-list', compact('allJobs'));
             }  
         }
+    }
+
+    public function dashboard(){
+        $reportedJobs = Job::where('num_reports', '>', 0)->get();
+        $listOfUser = User::where('user_role', 0)->get();
+
+        return view('/superadmin/dashboard', compact('reportedJobs', 'listOfUser'));
+        
     }
 
     public function changeAccountDetailsPage(User $user){

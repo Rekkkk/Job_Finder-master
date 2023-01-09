@@ -9,7 +9,7 @@
     }
 </style>
 @include('sweetalert::alert')
-    <div class="container-fluid p-5">
+    <div class="container-fluid p-4">
         <h1><b>ACCOUNT MANAGEMENT</b></h1><br>
         <table id="user-list" class="table table-hover" style="width:100%" >
             <thead>

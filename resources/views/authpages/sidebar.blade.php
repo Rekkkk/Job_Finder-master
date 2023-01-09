@@ -20,7 +20,7 @@
             <div class="sidebar-toggle-box">
                 <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
             </div>
-            <a href="" class="logo"> <img src="{{ asset('/logo.png') }}" style="width: 35px;" class="rounded-pill"> <b> Job Finder</b></a>
+            <a href="{{ route('job.list') }}" class="logo"> <img src="{{ asset('/logo.png') }}" style="width: 35px;" class="rounded-pill"> <b> Job Finder</b></a>
             <ul class="navbar-nav flex-row-reverse m-3 h6">
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:white">
@@ -62,6 +62,12 @@
                         <span>MY POSTED JOBS</span>
                     </a>
                 </li>
+                {{-- <li>
+                    <a href="{{ route('my.job.posted') }}">
+                        <i class="fa fa-list-alt" aria-hidden="true"></i>
+                        <span>MY APPLICATIONS</span>
+                    </a>
+                </li> --}}
               </ul>
           </div>
       </aside>
@@ -76,7 +82,7 @@
         <footer class="site-footer">
             <div class="text-center">
                 <p> 
-                    &copy; <strong>Mga Boss</strong>. All Rights Reserved 2022
+                    &copy; <strong>Job Finder</strong>. All Rights Reserved 2022
                 </p>
             </div>
         </footer>

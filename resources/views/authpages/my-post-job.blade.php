@@ -3,8 +3,8 @@
 @section('content')
 @include('sweetalert::alert')
 
-    <div class="container-fluid p-5">
-        <h1>MY POSTED JOBS</h1><br>
+    <div class="container-fluid p-4">
+        <h1 class="mt-4"><b>MY POSTED JOBS</b></h1><br>
         <table id="jobs-list" class="table table-hover" style="width:100%" >
             <thead>
                 <tr>    

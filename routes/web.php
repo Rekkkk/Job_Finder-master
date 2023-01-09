@@ -38,6 +38,7 @@ Route::group(['prefix' => 'logged-in', 'middleware' => 'auth'], function()
 {
     Route::controller(AuthController::class)->group(function () {
 
+        Route::get('/dashboard', 'dashboard')->name('dashboard');
         Route::get('/job-list', 'jobList')->name('job.list');
         Route::get('/edit-account', 'changeAccountDetailsPage')->name('edit.account.page');
         Route::post('/edit-name', 'changeName')->name('edit.name');
@@ -52,6 +53,9 @@ Route::group(['prefix' => 'logged-in', 'middleware' => 'auth'], function()
         Route::get('/job-posted', 'myPostJob')->name('my.job.posted');
         Route::get('/view-job/{job}', 'viewJob')->name('view.job');
         Route::get('/view-my-job/{job}', 'viewMyPostJob')->name('view.my.post');
+        Route::get('/view-applicant/{user}/{job}', 'viewApplicant')->name('view.applicant');
+        Route::get('/accept-applicant/{user}/{job}', 'acceptApplicant')->name('accept.applicant');
+        Route::get('/decline-applicant/{user}/{job}', 'declineApplicant')->name('decline.applicant');
         Route::get('/delete/{job}', 'deleteJob')->name('delete.job');
         Route::get('/update-job/page/{job}', 'updateJobPage')->name('update.job.page');
         Route::post('/update-job/{job}', 'updateJob')->name('update.job');
@@ -68,22 +72,18 @@ Route::group(['prefix' => 'logged-in', 'middleware' => 'auth'], function()
     });
     
     Route::group(['middleware' => 'super.admin'], function () {
+
         Route::controller(AccountManagementController::class)->group(function () {
             Route::get('/account-management', 'accountmanageMentPage')->name('account.management');
             Route::get('/disable-temp{user}', 'tempDisable')->name('temp.disable.account');
             Route::get('/disable-account{user}', 'disable')->name('disable.account');
         });
+
         Route::controller(PostReportController::class)->group(function () {
             Route::get('/report-post', 'reportPostPage')->name('report.post.management');
 
         });
     });
-
-    // Route::group(['prefix' => 'super-admin', 'middleware' => 'auth'], function()
-    // {
-    //     // Route::get('/job-list', 'jobList')->name('job.list');
-
-    // });
 
 });
 
