@@ -16,8 +16,8 @@
                 @foreach($myJobs as $job)       
                     
                 <tr onclick="window.location='{{ route('view.my.post', $job) }}';">                           
-                        <td>{{ $job->job_title }}</td>
-                        <td>{{date('F d, Y', strtotime($job->created_at))}}</td>                                                       
+                        <td style="font-size: 15px;">{{ $job->job_title }}</td>
+                        <td style="font-size: 15px;">{{date('F d, Y', strtotime($job->created_at))}}</td>                                                       
                 </tr>
                 @endforeach
             </tbody>

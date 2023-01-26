@@ -21,12 +21,12 @@
         </div><br>
         <div class="row">
             <div class="col-12">
-                <h6 style="overflow: auto; font-size: 14px; height: 200px;" >{{$job->job_description}}</h6>
+                <h6 style="overflow: auto; font-size: 19px; height: 200px;" >{{$job->job_description}}</h6>
             </div>
         </div><br><br>
         <div class="row">
-            <div class="col text-right">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#accepted"> <i class="fa fa-list ml-2"></i> Accepted Applicant</button>
+            <div class="col text-right" >
+                <button class="btn btn-primary"  data-toggle="modal" data-target="#accepted"> <i class="fa fa-list ml-2"></i> Accepted Applicant</button>
             </div>
         </div>
         <h1 class="text-center"><b>Applicant List</b></h1>

@@ -28,13 +28,13 @@
                 </div>
                 <div class="col-6 m-auto">
                     <ul class="nav justify-content-center" >
-                        <li class="nav-item" >
+                        <li class="nav-item text-center mr-1" style=" border: 2px solid #ffffff; border-radius: 10px; width: 180px; " >
                             <a class="nav-link" href="{{ route('dashboard') }}" style="color: white"><span><b>DASHBOARD</b></span></a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item text-center mr-1" style=" border: 2px solid #ffffff; border-radius: 10px; width: 180px;">
                             <a class="nav-link" href="{{ route('report.post.management') }}" style="color: white"><span><b>REPORTED POST</b></span></a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item text-center" style=" border: 2px solid #ffffff; border-radius: 10px; width: 180px;">
                             <a class="nav-link" href="{{ route('account.management') }}" style="color: white "><span><b>ACCOUNT MANAGEMENT</b> </span></a>
                         </li>
                       </ul>

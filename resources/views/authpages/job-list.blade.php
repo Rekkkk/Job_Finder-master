@@ -16,10 +16,10 @@
             <tbody id="myTable" style="cursor: pointer">
                 @foreach($allJobs as $job)       
                 <tr onclick="window.location='{{ route('view.job', $job) }}';">                           
-                        <td>{{ $job->job_title }}</td>
-                        <td>{{ $job->company_name }}</td>
-                        <td>{{ $job->company_address }}</td>    
-                        <td>{{date('F d, Y', strtotime($job->created_at))}}</td>                                             
+                        <td style="font-size: 15px;">{{ $job->job_title }}</td>
+                        <td style="font-size: 15px;">{{ $job->company_name }}</td>
+                        <td style="font-size: 15px;">{{ $job->company_address }}</td>    
+                        <td style="font-size: 15px;">{{date('F d, Y', strtotime($job->created_at))}}</td>                                             
                 </tr>
                 @endforeach
             </tbody>

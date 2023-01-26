@@ -44,30 +44,24 @@
           <div id="sidebar" class="nav-collapse ">
             <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
-                <li>
+                <li style=" border: 2px solid #ffffff; border-radius: 10px;">
                     <a href="{{ route('job.list') }}">
                         <i class="fa fa-list"></i>
                         <span>JOBS AVAILABLES</span>
                     </a>
                 </li>
-                <li>
+                <li style=" border: 2px solid #ffffff; border-radius: 10px;">
                     <a href="{{ route('create.job.page') }}">
                         <i class="fa fa-briefcase"></i>
                         <span>POST A JOB</span>
                     </a>
                 </li>
-                <li>
+                <li style=" border: 2px solid #ffffff; border-radius: 10px;">
                     <a href="{{ route('my.job.posted') }}">
                         <i class="fa fa-newspaper-o"></i>
                         <span>MY POSTED JOBS</span>
                     </a>
                 </li>
-                {{-- <li>
-                    <a href="{{ route('my.job.posted') }}">
-                        <i class="fa fa-list-alt" aria-hidden="true"></i>
-                        <span>MY APPLICATIONS</span>
-                    </a>
-                </li> --}}
               </ul>
           </div>
       </aside>

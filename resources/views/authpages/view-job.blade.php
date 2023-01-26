@@ -37,7 +37,7 @@
         </div><br>
         <div class="row">
             <div class="col-12">
-                <h6 style="overflow: auto; font-size: 15px; height: 200px;" >{{$job->job_description}}</h6>
+                <h6 style="overflow: auto; font-size: 19px; height: 200px;" >{{$job->job_description}}</h6>
             </div>
         </div>
         
