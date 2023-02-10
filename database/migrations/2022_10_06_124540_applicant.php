@@ -18,8 +18,10 @@ return new class extends Migration
             $table->foreign('job_id')->references('job_id')->on('job')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('user_id')->on('users');
+            $table->boolean('is_reported')->default(0);
             $table->boolean('is_accepted')->default(0);
             $table->boolean('is_decline')->default(0);
+            $table->dateTime('schedule')->nullable();
             $table->timestamps();
         });
     }

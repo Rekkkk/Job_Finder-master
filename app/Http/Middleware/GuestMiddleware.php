@@ -6,8 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
-class SuperAdmin
+class GuestMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,10 +17,15 @@ class SuperAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->user_role == 2){
-            return $next($request);
-        }else{
-            return back();
+        if(Auth::check()){
+            return redirect()->route('job.list');
         }
+        
+        $response = $next($request);
+
+        return $response->header('Cache-Control','nocache, no-store, max-age=0, must-revalidate')
+        ->header('Pragma','no-cache')
+        ->header('Expires','Sun, 02 Jan 1990 00:00:00 GMT');
+
     }
 }

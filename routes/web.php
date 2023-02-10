@@ -18,20 +18,23 @@ use App\Http\Controllers\PostReportController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
 
-Route::view('/login-page', '/login-page')->name('login.page');
-Route::view('/registration', '/register-page')->name('register.page');
-Route::view('/about-us', '/about-us')->name('aboutus.page');
-
-Route::controller(AuthController::class)->group(function () {
-    Route::get('/login-required', 'required')->name('login.page.reuired');
-
-    Route::post('/login', 'login')->name('login');
-    Route::post('/register', 'register')->name('register');
-
+Route::group(['middleware' => 'notAuth'], function(){
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('home');
+    
+    Route::view('/login-page', '/login-page')->name('login.page');
+    Route::view('/registration', '/register-page')->name('register.page');
+    Route::view('/about-us', '/about-us')->name('aboutus.page');
+    
+    Route::controller(AuthController::class)->group(function () {
+        Route::get('/login-required', 'required')->name('login.page.reuired');
+    
+        Route::post('/login', 'login')->name('login');
+        Route::post('/register', 'register')->name('register');
+    
+    });
 });
 
 Route::group(['prefix' => 'logged-in', 'middleware' => 'auth'], function()
@@ -52,19 +55,21 @@ Route::group(['prefix' => 'logged-in', 'middleware' => 'auth'], function()
         Route::post('/job-posted', 'postJob')->name('job.posted');
         Route::get('/job-posted', 'myPostJob')->name('my.job.posted');
         Route::get('/view-job/{job}', 'viewJob')->name('view.job');
+        Route::get('/view-job-applied', 'jobsApplied')->name('job.applied');
+
         Route::get('/view-my-job/{job}', 'viewMyPostJob')->name('view.my.post');
         Route::get('/view-applicant/{user}/{job}', 'viewApplicant')->name('view.applicant');
-        Route::get('/accept-applicant/{user}/{job}', 'acceptApplicant')->name('accept.applicant');
+        Route::post('/accept-applicant/{job}', 'acceptApplicant')->name('accept.applicant');
         Route::get('/decline-applicant/{user}/{job}', 'declineApplicant')->name('decline.applicant');
         Route::get('/delete/{job}', 'deleteJob')->name('delete.job');
         Route::get('/update-job/page/{job}', 'updateJobPage')->name('update.job.page');
         Route::post('/update-job/{job}', 'updateJob')->name('update.job');
         Route::post('/sumbit/{job}', 'submitResume')->name('submit');
  
-
     });
     Route::controller(PostReportController::class)->group(function () {
         Route::post('/report/{job}', 'report')->name('report');
+        Route::get('/view-reported-post/{user}/{job}', 'reportApplicant')->name('applicant.report');
         Route::get('/view-reported-post/{job}', 'viewReportedPost')->name('view.reported');
         Route::get('/unlist-post/{job}', 'unlistPost')->name('unlist');
 
@@ -74,7 +79,8 @@ Route::group(['prefix' => 'logged-in', 'middleware' => 'auth'], function()
     Route::group(['middleware' => 'super.admin'], function () {
 
         Route::controller(AccountManagementController::class)->group(function () {
-            Route::get('/account-management', 'accountmanageMentPage')->name('account.management');
+            Route::get('/applicant-accounts', 'applicantAccount')->name('applicant.accounts');
+            Route::get('/employer-accounts', 'employerAccount')->name('employer.account');
             Route::get('/disable-temp{user}', 'tempDisable')->name('temp.disable.account');
             Route::get('/disable-account{user}', 'disable')->name('disable.account');
         });

@@ -27,12 +27,11 @@ class Job extends Model
 
     public function user()
     {
-        return $this->belongsToMany(User::class, 'applicant', 'job_id', 'user_id')->withPivot('is_accepted', 'is_decline');
+        return $this->belongsToMany(User::class, 'applicant', 'job_id', 'user_id')->withPivot('is_accepted', 'is_decline', 'is_reported', 'schedule');
     }
 
     public function reports(){
         return $this->hasMany(JobReport::class);
-
     }
     
 }

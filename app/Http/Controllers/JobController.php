@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use DB;
+use Illuminate\Support\Collection;
 
 use Mail;
 use App\Mail\ApplicantNotification;
@@ -66,6 +67,23 @@ class JobController extends Controller
 
     }
 
+    public function jobsApplied(){
+        
+        $allJobs = Job::get();
+
+        $myAppliedJobs = new Collection;
+
+        foreach($allJobs as $jobs){
+            foreach($jobs->user as $appliedJobs){
+                if($appliedJobs->user_id == Auth::user()->user_id){
+                    $myAppliedJobs->push($jobs);
+                }
+            }
+        }
+        return view('/authpages/applied-list', compact('myAppliedJobs'));
+
+    }
+
     public function viewApplicant($user, Job $job){
 
         $applicant = User::where('user_id', $user)->first();
@@ -78,25 +96,25 @@ class JobController extends Controller
 
     }
 
-    public function acceptApplicant($user, Job $job){
-
-        $applicant = User::where('user_id', $user)->first();
+    public function acceptApplicant(Request $request, Job $job){
+        $applicant = User::where('user_id', $request->user)->first();
         $job = Job::where('job_id', $job->job_id)->first();
 
+        $data = DB::table('applicant')
+                    ->where('job_id', $job->job_id)
+                    ->where('user_id', $applicant->user_id)
+                    ->update(['is_accepted' => 1, 'schedule' => $request->schedule]);
+        
         $mailData = [
             "name" => $applicant->name,
             "job-title" => $job->job_title,
             "job-company" => $job->company_name,
             "job-address" => $job->company_address,
+            "interview-schedule" => date('l jS \of F Y h:i:s A', strtotime($request->schedule)),
             "status" => "accepted"
         ];
 
         Mail::to($applicant->email)->send(new ApplicantNotification($mailData));
-
-        $data = DB::table('applicant')
-                    ->where('job_id', $job->job_id)
-                    ->where('user_id', $user)
-                    ->update(['is_accepted' => 1]);
 
         Alert::success('Success','You Accept Applicant Successfully !');
 

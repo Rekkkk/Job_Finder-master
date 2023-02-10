@@ -33,7 +33,6 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-
         if (Auth::attempt($credentials)) {
             if(Auth::user()->userStatus->is_disable == 1){
                 Auth::logout();
@@ -60,6 +59,7 @@ class AuthController extends Controller
     }
 
     public function register(Request $request){
+
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -73,18 +73,34 @@ class AuthController extends Controller
             
         ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+        if($request->employer_id == null){
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'user_role' => 0
+            ]);
+        }else{ 
+
+            $imageName = time().'.'.$request->employer_id->getClientOriginalExtension();
+            $request->employer_id->move(public_path('/id'), $imageName);
+            
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'user_role' => 1,
+                'employer_id' => $imageName
+            ]);
+        }
+
+        
         UserStatus::create([
             'user_id' => User::all()->last()->user_id,
             'is_disable' => 0,
             'is_suspend' => 0,
             'suspend_end' => null
         ]);
-
 
         Alert::success('Success','You Register Successfully');
 
@@ -94,12 +110,15 @@ class AuthController extends Controller
     public function jobList(){
 
         if(Auth::check()){
-
-            if(Auth::user()->user_role == 1){
+            if(Auth::user()->user_role == 2){
 
                 return redirect()->route('dashboard');
 
-            }else{
+            }
+            elseif(Auth::user()->user_role == 1){
+                return redirect()->route('my.job.posted');
+            }
+            else{
                 $allJobs = Job::where('unlisted', 0)->get();
                 return view('/authpages/job-list', compact('allJobs'));
             }  
@@ -116,14 +135,12 @@ class AuthController extends Controller
 
     public function changeAccountDetailsPage(User $user){
 
-        if(Auth::user()->user_role == 1){
+        if(Auth::user()->user_role == 2){
             return view('/superadmin/my-account', compact('user'));
         }else{
             return view('/authpages/my-account', compact('user'));
         }
-
-        
-
+   
     }
 
     public function changePassword(Request $request){
@@ -177,8 +194,6 @@ class AuthController extends Controller
         return back();;
 
     }
-
-
 
     public function logOut(){
 

@@ -8,7 +8,9 @@
 </head>
 <body>
     <p>Good Day {{ $mailData['name'] }},</p>
-    <p>Your application for {{ $mailData['job-title'] }} at {{ $mailData['job-company'] }} {{ $mailData['job-address'] }} is {{ $mailData['status'] }}</p>
+    <p>Your application for {{ $mailData['job-title'] }} at {{ $mailData['job-company'] }} {{ $mailData['job-address'] }} is {{ $mailData['status'] }}. Your Schedule of interview is {{$mailData['interview-schedule']}} please follow your schedule.</p>
     <p>Thank You !</p>
+    <p>Job Finder Philippines</p>
+    
 </body>
 </html>

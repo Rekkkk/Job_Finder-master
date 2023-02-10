@@ -18,28 +18,29 @@
 <body>
     <section id="container">
         <header class="header black-bg">
-            <div class="sidebar-toggle-box">
-                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-            </div>
+        
             <div class="row">
-                <div class="col-3">
-                    <a href="{{ route('dashboard') }}" class="logo"> <img src="{{ asset('/logo.png') }}" style="width: 35px;" class="rounded-pill"> <b> Job Finder</b></a>
+                <div class="col-2">
+                    <a href="{{ route('dashboard') }}" class="logo mt-3"> <img src="{{ asset('/logo.png') }}" style="width: 35px;" class="rounded-pill"> <b> Job Finder</b></a>
 
                 </div>
-                <div class="col-6 m-auto">
+                <div class="col-8 m-auto">
                     <ul class="nav justify-content-center" >
-                        <li class="nav-item text-center mr-1" style=" border: 2px solid #ffffff; border-radius: 10px; width: 180px; " >
+                        <li class="nav-item text-center mr-1" style=" border: 2px solid #ffffff; border-radius: 10px; width: 165px; " >
                             <a class="nav-link" href="{{ route('dashboard') }}" style="color: white"><span><b>DASHBOARD</b></span></a>
                         </li>
-                        <li class="nav-item text-center mr-1" style=" border: 2px solid #ffffff; border-radius: 10px; width: 180px;">
+                        <li class="nav-item text-center mr-1" style=" border: 2px solid #ffffff; border-radius: 10px; width: 165px;">
                             <a class="nav-link" href="{{ route('report.post.management') }}" style="color: white"><span><b>REPORTED POST</b></span></a>
                         </li>
-                        <li class="nav-item text-center" style=" border: 2px solid #ffffff; border-radius: 10px; width: 180px;">
-                            <a class="nav-link" href="{{ route('account.management') }}" style="color: white "><span><b>ACCOUNT MANAGEMENT</b> </span></a>
+                        <li class="nav-item text-center mr-1" style=" border: 2px solid #ffffff; border-radius: 10px; width: 165px;">
+                            <a class="nav-link" href="{{ route('employer.account') }}" style="color: white "><span><b>EMPLOYER ACCOUNTS</b> </span></a>
+                        </li>
+                        <li class="nav-item text-center" style=" border: 2px solid #ffffff; border-radius: 10px; width: 165px;">
+                            <a class="nav-link" href="{{ route('applicant.accounts') }}" style="color: white "><span><b>APPLICANT ACCOUNTS</b> </span></a>
                         </li>
                       </ul>
                 </div>
-                <div class="col-3">
+                <div class="col-2">
                     <ul class="navbar-nav flex-row-reverse m-3 h6">
                 
                         <li class="nav-item dropdown ">

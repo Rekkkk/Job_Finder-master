@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id('user_id');
             $table->string('name');
             $table->string('email');
-            //0-default 1-superadmin
-            $table->boolean('user_role')->default('0');
             $table->string('password');
+            //0-applicant 1-employer 2-superadmin
+            $table->integer('user_role');
             $table->integer('num_reports')->default(0);
-
+            $table->string('employer_id')->nullable();
             $table->timestamps();
         });
     }

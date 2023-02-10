@@ -14,6 +14,8 @@ class Applicant extends Model
     protected $fillable = [
         'user_id',
         'job_id',
+        'schedule',
+        'is_reported',
         'is_accepted',
         'is_decline'
     ];  

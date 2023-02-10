@@ -13,11 +13,18 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class AccountManagementController extends Controller
 {
-    public function accountmanageMentPage(){
+    public function applicantAccount(){
 
         $listOfUser = User::where('user_role', 0)->get();
 
-        return view ('/superadmin/accountmanagement/account-management', compact('listOfUser'));
+        return view ('/superadmin/accountmanagement/applicant-account', compact('listOfUser'));
+    }
+
+    public function employerAccount(){
+
+        $listOfUser = User::where('user_role', 1)->get();
+
+        return view ('/superadmin/accountmanagement/employer-account', compact('listOfUser'));
     }
 
     public function tempDisable(User $user){

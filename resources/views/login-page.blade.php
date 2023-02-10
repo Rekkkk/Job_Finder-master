@@ -7,17 +7,14 @@
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
           <div class="card shadow-2-strong" style="border-radius: 1rem;">
             <div class="card-body p-5 text-center">
-  
               <h2 class="mb-5"><b>Log-in</b></h2>
               @if($errors->any())
                 <div class="alert alert-danger" role="alert">
                     {{$errors->first()}}
                 </div>
               @endif
-
               <form action="{{ route('login') }}" method="POST">
                 @csrf
-
                 <div class="form-outline mb-4">
                     <input type="email" id="typeEmailX-2" name="email" class="form-control form-control" placeholder="Email" value="{{ old('email') }}"/>
                     <label class="form-label h6 mt-1" for="typeEmailX-2"><b>Email</b></label>

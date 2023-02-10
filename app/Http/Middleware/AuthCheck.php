@@ -17,6 +17,7 @@ class AuthCheck
      */
     public function handle(Request $request, Closure $next)
     {
+        
         if(!Auth::check() && ($request->route()->getPrefix() == 'logged-in' )){
             return redirect()->route('home');
         }

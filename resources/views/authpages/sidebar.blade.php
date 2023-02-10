@@ -44,24 +44,33 @@
           <div id="sidebar" class="nav-collapse ">
             <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
-                <li style=" border: 2px solid #ffffff; border-radius: 10px;">
-                    <a href="{{ route('job.list') }}">
-                        <i class="fa fa-list"></i>
-                        <span>JOBS AVAILABLES</span>
-                    </a>
-                </li>
-                <li style=" border: 2px solid #ffffff; border-radius: 10px;">
-                    <a href="{{ route('create.job.page') }}">
-                        <i class="fa fa-briefcase"></i>
-                        <span>POST A JOB</span>
-                    </a>
-                </li>
-                <li style=" border: 2px solid #ffffff; border-radius: 10px;">
-                    <a href="{{ route('my.job.posted') }}">
-                        <i class="fa fa-newspaper-o"></i>
-                        <span>MY POSTED JOBS</span>
-                    </a>
-                </li>
+                @if(Auth::user()->user_role == 1)
+                    <li style=" border: 2px solid #ffffff; border-radius: 10px;">
+                        <a href="{{ route('my.job.posted') }}">
+                            <i class="fa fa-newspaper-o"></i>
+                            <span>MY POSTED JOBS</span>
+                        </a>
+                    </li>
+                    <li style=" border: 2px solid #ffffff; border-radius: 10px;">
+                        <a href="{{ route('create.job.page') }}">
+                            <i class="fa fa-clipboard" aria-hidden="true"></i>
+                            <span>POST A JOB</span>
+                        </a>
+                    </li>
+                @else
+                    <li style=" border: 2px solid #ffffff; border-radius: 10px;">
+                        <a href="{{ route('job.list') }}">
+                            <i class="fa fa-list"></i>
+                            <span>JOBS AVAILABLES</span>
+                        </a>
+                    </li>
+                    <li style=" border: 2px solid #ffffff; border-radius: 10px;">
+                        <a href="{{ route('job.applied') }}">
+                            <i class="fa fa-briefcase" aria-hidden="true"></i>
+                            <span>JOBS APPLIED</span>
+                        </a>
+                    </li>
+                @endif
               </ul>
           </div>
       </aside>

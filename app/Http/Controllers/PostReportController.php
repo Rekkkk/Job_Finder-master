@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use App\Models\JobReport;
 use App\Models\User;
-
+use App\Models\Applicant;
 use RealRashid\SweetAlert\Facades\Alert;
 use DB;
 
@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 
 class PostReportController extends Controller
 {
+
     public function reportPostPage(){
 
         $reportedJobs = Job::where('num_reports', '>', 0)->get();
@@ -28,6 +29,7 @@ class PostReportController extends Controller
         return view ('/superadmin/view-reported-post', compact('job', 'comment'));
 
     }
+
     public function unlistPost(Job $job){
 
         Job::where('job_id', $job->job_id)
@@ -38,6 +40,7 @@ class PostReportController extends Controller
         return back();
 
     }
+
     public function report(Request $request, Job $job){
 
         JobReport::create([
@@ -49,8 +52,6 @@ class PostReportController extends Controller
 
         $jobSelected = Job::where('job_id', $job->job_id)->first();
 
-         
-
         User::where('user_id', $jobSelected->user_id)
         ->increment('num_reports');
 
@@ -60,4 +61,20 @@ class PostReportController extends Controller
 
 
     }
+
+    public function reportApplicant($user, Job $job){
+
+        DB::table('applicant')->where('job_id', $job->job_id)
+                            ->where('user_id', $user)
+                            ->update(['is_reported' => 1]);
+
+        User::where('user_id', $user)->increment('num_reports');
+                    
+
+        Alert::success('Success','You report applicant success !');
+
+        return back();
+
+    }
+
 }
