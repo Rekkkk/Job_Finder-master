@@ -23,6 +23,11 @@
                     <input type="password" id="typePasswordX-2" name="password" class="form-control form-control password" placeholder="Password"/>
                     <label class="form-label h6 mt-1" for="typePasswordX-2"><b>Password</b></label>
                   </div>
+                  <div class="text-right">
+                    <a href="" data-toggle="modal" 
+                    data-target="#forgot-password" style="margin-left: auto" class="h6">Forgot password?</a>
+
+                  </div>
                   <div style="display: flex">
                     <input type='checkbox' onclick="myFunction()" id='show-password'/>
                     <p style="margin-bottom: -1px; "class="p-1"> Show password</p>
@@ -36,15 +41,41 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" id="forgot-password">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">Forgot your password</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <form action="{{ route('forgot.password') }}" method="POST">
+              @csrf
+              <div class="modal-body">
+                  <div class="row">
+                      <div class="col lg-12">
+                          <label class="title-detail" >Enter your Email :</label>
+                          <input type="email" class="form-control" name="email" placeholder="Enter your email address" required>
+                      </div>
+                  </div>   
+                  <div class="row mt-3">
+                    <div class="col text-right pr-3">
+                      <button type="submit" class="btn btn-success" style="width: 120px;">Confirm</button>
+                    </div>
+                  </div>                     
+              </div>
+          </form>
+        </div>
+      </div>
+  </div>
 <script>
     $(document).ready(function(){
-            $("#show-password").click(function(){
-                if("password"== $(".password").attr("type")){
-                    $(".password").prop("type", "text");
-                }else{
-                    $(".password").prop("type", "password");
-                }
-            });
+        $("#show-password").click(function(){
+            if("password"== $(".password").attr("type")){
+                $(".password").prop("type", "text");
+            }else{
+                $(".password").prop("type", "password");
+            }
+        }); 
     });
 </script>
 

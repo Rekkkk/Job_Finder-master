@@ -11,10 +11,9 @@ use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use DB;
 use Illuminate\Support\Collection;
-
 use Mail;
 use App\Mail\ApplicantNotification;
-use App\Mail\OrderShipped;
+
 
 
 

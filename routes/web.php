@@ -25,12 +25,13 @@ Route::group(['middleware' => 'notAuth'], function(){
     })->name('home');
     
     Route::view('/login-page', '/login-page')->name('login.page');
-    Route::view('/registration', '/register-page')->name('register.page');
     Route::view('/about-us', '/about-us')->name('aboutus.page');
     
     Route::controller(AuthController::class)->group(function () {
+        Route::get('/registration', 'registerPage')->name('register.page');
+
         Route::get('/login-required', 'required')->name('login.page.reuired');
-    
+        Route::post('/forgot-password', 'forgetPassword')->name('forgot.password');
         Route::post('/login', 'login')->name('login');
         Route::post('/register', 'register')->name('register');
     

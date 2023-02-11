@@ -15,15 +15,15 @@
     </div>
   </div><br>
   <div class="row mt-3">
-    <div class="col-xl-6 col-md-6 dashboard" >
-        <div class="card m-auto" style="width: 500px;" onclick="window.location='{{ route('report.post.management') }}';">
+    <div class="col-lg-4 col-md-6 dashboard" >
+        <div class="card m-auto" style="width: 380px;" onclick="window.location='{{ route('report.post.management') }}';">
             <div class="card-block">
                 <div class="d-flex p-2">
                     <i class="fa fa-briefcase f-40"></i>  <h4 class="ml-2 mt-2 text-muted">Reported Jobs</h4>          
                 </div>
                 <div class="row align-items-center">
                     <div class="col-12 text-right " >
-                        <h2>{{$reportedJobs->count()}}</h2>
+                        <h2>{{$reportedJobs}}</h2>
                         
                     </div>
                     
@@ -36,19 +36,34 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-6 col-md-6 dashboard" >
-        <div class="card m-auto" style="width: 500px;">
+    <div class="col-lg-4 col-md-6 dashboard" >
+        <div class="card m-auto" style="width: 380px;">
             <div class="card-block">
                 <div class="d-flex p-2">
-                    <i class="fa fa-users f-40"></i>  <h4 class="ml-2 mt-2 text-muted">No. of Users</h4>          
+                    <i class="fa fa-users f-40"></i>  <h4 class="ml-2 mt-2 text-muted">No. of Employer Account</h4>          
                 </div>
                 <div class="row align-items-center">
                     <div class="col-12 text-right " >
-                        <h2>{{$listOfUser->count()}}</h2>
-                        
+                        <h2>{{$applicant}}</h2>
                     </div>
-                    
-                    
+                </div>
+            </div>
+            <div class="card-footer bg-c-red">
+                <div class="row align-items-center">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 dashboard" >
+        <div class="card m-auto" style="width: 380px;">
+            <div class="card-block">
+                <div class="d-flex p-2">
+                    <i class="fa fa-users f-40"></i>  <h4 class="ml-2 mt-2 text-muted">No. of Applicant Account</h4>          
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-12 text-right " >
+                        <h2>{{$applicant}}</h2>
+                    </div>
                 </div>
             </div>
             <div class="card-footer bg-c-red">

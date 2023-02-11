@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
+use Mail;
+use App\Mail\ForgotPassword;
+
 use Validator;
 
 
@@ -54,8 +57,22 @@ class AuthController extends Controller
             }
         }
         else{
-            return redirect()->back()->withInput()->withErrors(['msg' => 'Invalid username or password']);
+
+            Alert::html('error','Invalid username or password', 'error');
+
+            return redirect()->route('login.page')->withInput();
         }
+    }
+
+    public function registerPage(){
+
+        $name1 = "";
+        
+        $name2 = "";
+        $page = 1;
+        
+        return view('/register-page',  compact('page', 'name1' , 'name2'));
+
     }
 
     public function register(Request $request){
@@ -73,7 +90,21 @@ class AuthController extends Controller
             
         ]);
 
+        $emailUnique = User::where('email', $request->email)->first();
+
         if($request->employer_id == null){
+
+            if($emailUnique){
+
+                Alert::html('error','Your Email is taken by others please use unique email !', 'error');
+
+                $name1 = $request->name;
+                $name2 = "";
+                $page = 1;
+                
+                return view('/register-page',  compact('page', 'name1', 'name2'));
+
+            }
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -81,6 +112,18 @@ class AuthController extends Controller
                 'user_role' => 0
             ]);
         }else{ 
+
+            if($emailUnique){
+
+                Alert::html('error','Your Email is taken by others please use unique email !', 'error');
+
+                $name2 = $request->name;
+                $name1 = "";
+                $page = 2;
+                
+                return view('/register-page',  compact('page', 'name1', 'name2'));
+    
+            }
 
             $imageName = time().'.'.$request->employer_id->getClientOriginalExtension();
             $request->employer_id->move(public_path('/id'), $imageName);
@@ -126,10 +169,12 @@ class AuthController extends Controller
     }
 
     public function dashboard(){
-        $reportedJobs = Job::where('num_reports', '>', 0)->get();
-        $listOfUser = User::where('user_role', 0)->get();
 
-        return view('/superadmin/dashboard', compact('reportedJobs', 'listOfUser'));
+        $reportedJobs = Job::where('num_reports', '>', 0)->count();
+        $employer = User::where('user_role', 0)->count();
+        $applicant = User::where('user_role', 1)->count();
+
+        return view('/superadmin/dashboard', compact('reportedJobs', 'employer' ,'applicant'));
         
     }
 
@@ -194,6 +239,36 @@ class AuthController extends Controller
         return back();;
 
     }
+
+    public function forgetPassword(Request $request){
+
+        $request->validate([
+            'email' => 'required',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        $chars      = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_?,.";
+        $rand_chars = substr( str_shuffle( $chars ), 0, 12 );
+
+        $password =  $rand_chars;
+
+        $user->password = Hash::make($password);
+        $user->save();
+
+        $data = [
+            "name" => $user->name,
+            "password" => $password
+        ];
+
+        Mail::to($user->email)->send(new ForgotPassword($data));
+
+        Alert::success('Success','New password send successfully to your email !');
+
+        return back();
+
+    }
+
 
     public function logOut(){
 

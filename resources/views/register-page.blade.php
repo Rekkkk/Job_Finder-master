@@ -9,14 +9,30 @@
                 <div class="card-body p-md-5">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
+                            @if($page == 1)
                             <a class="nav-link active h6" data-toggle="tab" href="#applicant">Applicant</a>
+
+                            @else
+                            <a class="nav-link  h6" data-toggle="tab" href="#applicant">Applicant</a>
+
+                            @endif
                         </li>
                         <li class="nav-item">
+                            @if($page == 2)
+                            <a class="nav-link active h6" data-toggle="tab" href="#employer">Employer</a>
+
+                            @else
                             <a class="nav-link h6" data-toggle="tab" href="#employer">Employer</a>
+
+                            @endif
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div id="applicant" class="container tab-pane active"><br>
+                        @if($page == 1)
+                            <div id="applicant" class="container tab-pane active"><br>
+                        @else
+                            <div id="applicant" class="tab-pane container fade"><br>
+                        @endif
                             <div class="row justify-content-center">
                                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"><b>Applicant Registration</b></p>
@@ -30,33 +46,33 @@
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" id="form3Example1c" name="name" class="form-control" value="{{ old('name') }}" placeholder="Enter your Name" required>
+                                                <input type="text" id="form3Example1c" name="name" class="form-control" value="{{ $name1 }}" placeholder="Enter your Name" required>
                                                 <label class="form-label h6" for="form3Example1c"><b>Your Name</b> </label>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="email" id="form3Example3c" name="email" class="form-control" value="{{ old('email') }}" placeholder="Enter your Email" required >
+                                                <input type="email" id="form3Example3c" name="email" class="form-control" placeholder="Enter your Email" required >
                                                 <label class="form-label h6" for="form3Example3c"><b>Your Email</b></label>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" id="form3Example4c" name="password" class="form-control password" placeholder="Enter your password" minlength="8" required>
+                                                <input type="password" id="form3Example4c" name="password" class="form-control password-applicant" placeholder="Enter your password" minlength="8" required>
                                                 <label class="form-label h6" for="form3Example4c"><b>Password</b></label>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" id="form3Example4cd" name="confirm_password" class="form-control password" placeholder="Enter confirm password" minlength="8" required>
+                                                <input type="password" id="form3Example4cd" name="confirm_password" class="form-control password-applicant" placeholder="Enter confirm password" minlength="8" required>
                                                 <label class="form-label h6" for="form3Example4cd"><b>Confirm your password</b></label>
                                             </div>
                                         </div>
                                         <div style="display: flex">
-                                            <input type='checkbox' onclick="myFunction()" id='show-password'/>
+                                            <input type='checkbox' onclick="myFunction()" id='show-password-applicant'/>
                                             <p style="margin-bottom: -1px; "class="p-1"> Show password</p>
                                         </div> <br>
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
@@ -70,7 +86,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="employer" class="container  tab-pane fade"><br>
+
+                        @if($page == 2)
+                            <div id="employer" class="container tab-pane active"><br>
+                        @else
+                            <div id="employer" class="tab-pane container fade"><br>
+                        @endif
                             <div class="row justify-content-center">
                                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"><b>Employer Registration</b></p>
@@ -91,14 +112,14 @@
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" id="form3Example1c" name="name" class="form-control" value="{{ old('name') }}" placeholder="Enter your Name" required>
+                                                <input type="text" id="form3Example1c" name="name" class="form-control" value="{{ $name2 }}" placeholder="Enter your Name" required>
                                                 <label class="form-label h6" for="form3Example1c"><b>Your Name</b> </label>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="email" id="form3Example3c" name="email" class="form-control" value="{{ old('email') }}" placeholder="Enter your Email" required>
+                                                <input type="email" id="form3Example3c" name="email" class="form-control" placeholder="Enter your Email" required>
                                                 <label class="form-label h6" for="form3Example3c"><b>Your Email</b></label>
                                             </div>
                                         </div>
@@ -145,6 +166,14 @@
                 $(".password").prop("type", "text");
             }else{
                 $(".password").prop("type", "password");
+            }
+        });
+
+        $("#show-password-applicant").click(function(){
+            if("password"== $(".password").attr("type")){
+                $(".password-applicant").prop("type", "text");
+            }else{
+                $(".password-applicant").prop("type", "password");
             }
         });
 
