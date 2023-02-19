@@ -33,7 +33,7 @@
                         <td class="h5 text-danger">{{ $user->num_reports }}</td>          
                         <td class="d-flex">
                             @if($user->userStatus->is_suspend == 1)
-                            <p class="text-danger">Account Temporary Ban</p>
+                            <span class="text-danger">Account Temporary Ban</span>
                             @elseif($user->userStatus->is_disable == 0)
                             <a href="{{ route('disable.account', $user) }}" class="btn btn-danger buttons">Disable</a>
                             <a href="{{ route('temp.disable.account', $user) }}" class="btn btn-danger buttons ml-1 ">Suspend</a>

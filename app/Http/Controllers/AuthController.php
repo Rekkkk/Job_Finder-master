@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\UserStatus;
 use App\Models\Job;
+use App\Models\EmployerID;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -36,22 +37,24 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if(Auth::attempt($credentials)) {
+         
             if(Auth::user()->userStatus->is_disable == 1){
                 Auth::logout();
-                return back()->withErrors(['msg' => 'Your account has banned']);
+                return redirect()->route('login.page')->withErrors(['msg' => 'Your account has banned']);
             }
             elseif(Auth::user()->userStatus->is_suspend == 1){
-
                 if(Auth::user()->userStatus->suspend_end < Carbon::now()){
                     UserStatus::where('user_id', '=',  Auth::user()->user_id)
                     ->update(['is_suspend' => 0,'suspend_end' => null]);
+
                      return redirect()->route('job.list');
                 }else{
-                    return back()->withErrors(['msg' => 'Your account are temporary ban until ' . Carbon::parse(Auth::user()->userStatus->suspend_end)->format('F d, Y')]);
+                    $suspendTime = Carbon::parse(Auth::user()->userStatus->suspend_end)->format('F d, Y');
                     Auth::logout();
+                    return redirect()->route('login.page')->withErrors(['msg' => 'Your account are temporary ban until ' . $suspendTime]);
                 }
-               
+                
             }else{
                 return redirect()->route('job.list');
             }
@@ -67,7 +70,6 @@ class AuthController extends Controller
     public function registerPage(){
 
         $name1 = "";
-        
         $name2 = "";
         $page = 1;
         
@@ -125,16 +127,25 @@ class AuthController extends Controller
     
             }
 
-            $imageName = time().'.'.$request->employer_id->getClientOriginalExtension();
-            $request->employer_id->move(public_path('/id'), $imageName);
+            // $imageName = time().'.'.$request->employer_id->getClientOriginalExtension();
+            // $request->employer_id->move(public_path('/id'), $imageName);
+
+        
             
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'user_role' => 1,
-                'employer_id' => $imageName
             ]);
+
+            foreach ($request->file('employer_id') as $imagefile) {
+                $image = new EmployerID;
+                $path = $imagefile->store('/', ['disk' =>   'employer_id']);
+                $image->file_name = $path;
+                $image->user_id = User::all()->last()->user_id;
+                $image->save();
+            }
         }
 
         
@@ -268,7 +279,6 @@ class AuthController extends Controller
         return back();
 
     }
-
 
     public function logOut(){
 

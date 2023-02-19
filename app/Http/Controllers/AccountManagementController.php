@@ -13,6 +13,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class AccountManagementController extends Controller
 {
+
     public function applicantAccount(){
 
         $listOfUser = User::where('user_role', 0)->get();
@@ -23,8 +24,16 @@ class AccountManagementController extends Controller
     public function employerAccount(){
 
         $listOfUser = User::where('user_role', 1)->get();
+        $qwer = $listOfUser->first()->ID->first();
 
-        return view ('/superadmin/accountmanagement/employer-account', compact('listOfUser'));
+        return view ('/superadmin/accountmanagement/employer-account', compact('listOfUser', 'qwer'));
+    }
+
+    public function viewID(User $user){
+
+        $selectedUser = User::where('user_id', $user->user_id)->first();
+
+        return view ('/superadmin/accountmanagement/id', compact('selectedUser'));
     }
 
     public function tempDisable(User $user){

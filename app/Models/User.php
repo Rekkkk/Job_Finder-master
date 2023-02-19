@@ -27,7 +27,6 @@ class User extends Authenticatable
         'email',
         'password',
         'user_role',
-        'employer_id'
     ];
 
     /**
@@ -64,5 +63,11 @@ class User extends Authenticatable
         
     }
 
+    public function ID()
+    {
+        return $this->hasMany(EmployerID::class, 'user_id');
+    }
+
+    
 }
 

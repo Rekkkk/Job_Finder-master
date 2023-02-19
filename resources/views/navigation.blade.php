@@ -14,24 +14,24 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-        <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset('/logo.png') }}" style="width:40px;" >
-            JOB FINDER
+        <a class="navbar-brand d-flex" href="{{ route('home') }}">
+            <img src="{{ asset('/logo.png') }}" style="width:55px;" >
+            <h3 class="ml-3 mt-2"><b>Job Finder</b></h3>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse flex-row-reverse" id="collapsibleNavbar">
+        <div class="collapse navbar-collapse flex-row-reverse mt-2" id="collapsibleNavbar">
             <ul class="navbar-nav ">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('aboutus.page') }}">About us</a>
+                    <a class="nav-link h6" href="{{ route('aboutus.page') }}">About us</a>
                 </li>
           
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register.page') }}">Register</a>
+                    <a class="nav-link h6" href="{{ route('register.page') }}">Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login.page') }}">Login</a>
+                    <a class="nav-link h6" href="{{ route('login.page') }}">Login</a>
                 </li>
             </ul>
         </div>  

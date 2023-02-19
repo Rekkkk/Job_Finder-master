@@ -61,6 +61,11 @@ return [
             'root'   => public_path() . '/pdf'
         ],
 
+        'employer_id' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/id'
+        ],
+
     ],
 
     /*

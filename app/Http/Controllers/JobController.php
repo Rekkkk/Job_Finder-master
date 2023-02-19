@@ -13,6 +13,7 @@ use DB;
 use Illuminate\Support\Collection;
 use Mail;
 use App\Mail\ApplicantNotification;
+use App\Mail\ApplicationNotification;
 
 
 
@@ -96,7 +97,9 @@ class JobController extends Controller
     }
 
     public function acceptApplicant(Request $request, Job $job){
+        
         $applicant = User::where('user_id', $request->user)->first();
+
         $job = Job::where('job_id', $job->job_id)->first();
 
         $data = DB::table('applicant')
@@ -131,6 +134,7 @@ class JobController extends Controller
             "job-title" => $job->job_title,
             "job-company" => $job->company_name,
             "job-address" => $job->company_address,
+            "interview-schedule" => "",
             "status" => "declined"
         ];
 
@@ -156,6 +160,8 @@ class JobController extends Controller
     }
 
     public function submitResume(Request $request, Job $job){
+
+        $employer = User::where('user_id', $job->user_id)->first();
 
         $applicants = Applicant::where('job_id', $job->job_id)->get();
 
@@ -188,6 +194,15 @@ class JobController extends Controller
             $requirements->user_id = Auth::user()->user_id;
             $requirements->save();
         }
+
+        $data = [
+            "name" => $employer->name,
+            "job-title" => $job->job_title,
+            "job-company" => $job->company_name,
+            "job-address" => $job->company_address,
+        ];
+
+        Mail::to($employer->email)->send(new ApplicationNotification($data));
 
         Alert::success('Success','You Submit Application Success !');
 

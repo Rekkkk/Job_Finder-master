@@ -1,6 +1,11 @@
 @extends('superadmin.sidebar')
 
 @section('content')
+<style>
+    .dashboard{
+        cursor: pointer;
+    }
+</style>
 
 <div class="container-fluid p-4">
   <h1><b>Dashboard</b></h1><br>
@@ -37,7 +42,7 @@
         </div>
     </div>
     <div class="col-lg-4 col-md-6 dashboard" >
-        <div class="card m-auto" style="width: 380px;">
+        <div class="card m-auto" style="width: 380px;" onclick="window.location='{{ route('employer.account') }}';">
             <div class="card-block">
                 <div class="d-flex p-2">
                     <i class="fa fa-users f-40"></i>  <h4 class="ml-2 mt-2 text-muted">No. of Employer Account</h4>          
@@ -55,7 +60,7 @@
         </div>
     </div>
     <div class="col-lg-4 col-md-4 dashboard" >
-        <div class="card m-auto" style="width: 380px;">
+        <div class="card m-auto" style="width: 380px;" onclick="window.location='{{ route('applicant.accounts') }}';">
             <div class="card-block">
                 <div class="d-flex p-2">
                     <i class="fa fa-users f-40"></i>  <h4 class="ml-2 mt-2 text-muted">No. of Applicant Account</h4>          

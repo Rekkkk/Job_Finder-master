@@ -33,7 +33,6 @@
                     <p style="margin-bottom: -1px; "class="p-1"> Show password</p>
                 </div> <br>
                   <button class="btn btn-success btn-lg btn-block" type="submit">Login</button>
-                  
               </form><br>
               <a href="{{ route('register.page') }}" class="h6 mt-4">Dont have an account? Register</a>  
             </div>

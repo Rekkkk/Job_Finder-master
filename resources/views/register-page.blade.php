@@ -82,7 +82,7 @@
                                     </form>
                                 </div>
                                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                                    <img src="{{ asset('/job.jpg') }}" class="img-fluid" style="border-radius: 10px " alt="Sample image">
+                                    <img src="{{ asset('/BRGY MAMATID LOGO.png') }}" class="img-fluid" style="border-radius: 10px " alt="Sample image">
                                 </div>
                             </div>
                         </div>
@@ -103,9 +103,8 @@
                                     <form action="{{ route('register') }}" id="employers_form"enctype="multipart/form-data" method="POST"  class="mx-1 mx-md-4">
                                         @csrf
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                            <span class="text-danger">* Can accept in pdf form only</span>
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input " id="customFile" name="employer_id" accept="application/pdf" required>
+                                                <input type="file" class="custom-file-input " id="customFile" name="employer_id[]" accept="image/*" multiple required>
                                                 <label class="custom-file-label" for="customFile">Upload your ID</label>
                                             </div>
                                         <label class="form-label h6 mb-3"><b>Your Company ID</b></label>
@@ -148,7 +147,7 @@
                                     </form>
                                 </div>
                                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                                    <img src="{{ asset('/job.jpg') }}" class="img-fluid" style="border-radius: 10px " alt="Sample image">
+                                    <img src="{{ asset('/BRGY MAMATID LOGO.png') }}" class="img-fluid" style="border-radius: 10px " alt="Sample image">
                                 </div>
                             </div>
                         </div>

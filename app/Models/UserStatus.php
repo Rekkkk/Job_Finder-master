@@ -9,10 +9,8 @@ class UserStatus extends Model
 {
     use HasFactory;
 
-
     protected $table = 'users_status';
 
-      
     public $timestamps = false;
 
     protected $fillable = [

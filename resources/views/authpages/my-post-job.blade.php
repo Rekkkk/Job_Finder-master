@@ -9,6 +9,7 @@
             <thead>
                 <tr>    
                     <th>Job Title</th>
+                    <th>Applicant</th>
                     <th>Date Posted</th>       
                 </tr>
             </thead>
@@ -16,8 +17,9 @@
                 @foreach($myJobs as $job)       
                     
                 <tr onclick="window.location='{{ route('view.my.post', $job) }}';">                           
-                        <td style="font-size: 15px;">{{ $job->job_title }}</td>
-                        <td style="font-size: 15px;">{{date('F d, Y', strtotime($job->created_at))}}</td>                                                       
+                        <td style="font-size: 18px;">{{ $job->job_title }}</td>
+                        <td style="font-size: 18px;">{{ $job->user->count() }}</td>
+                        <td style="font-size: 18px;">{{date('F d, Y', strtotime($job->created_at))}}</td>                                                       
                 </tr>
                 @endforeach
             </tbody>
