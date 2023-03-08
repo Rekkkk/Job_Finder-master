@@ -24,9 +24,8 @@ class AccountManagementController extends Controller
     public function employerAccount(){
 
         $listOfUser = User::where('user_role', 1)->get();
-        $qwer = $listOfUser->first()->ID->first();
 
-        return view ('/superadmin/accountmanagement/employer-account', compact('listOfUser', 'qwer'));
+        return view ('/superadmin/accountmanagement/employer-account', compact('listOfUser'));
     }
 
     public function viewID(User $user){
