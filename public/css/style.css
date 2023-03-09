@@ -98,7 +98,7 @@ ul.sidebar-menu , ul.sidebar-menu li ul.sub{
 }
 
 ul.sidebar-menu {
-    margin-top: 75px;
+    margin-top: 10px;
 }
 
 #sidebar > ul > li > ul.sub {
@@ -239,3 +239,51 @@ input[type=file]{
     cursor: pointer;
 }
 
+#logo{
+    border-radius: 500%; 
+    
+}
+/* .container{
+    max-width: 100%;
+} */
+.main-content{
+    margin-top: 100px;
+}
+.div-logo{
+    width: 96%;
+    position: absolute;
+}
+.side-logo{
+   
+    width: 100%;
+    max-width: 250px;
+    height: 240px;
+}
+.bsit{
+    float: right;
+}
+
+.sp-greatings{
+    margin-top: 200px;
+}
+
+@media only screen and (max-width: 1230px) {
+    .div-logo{
+        position: relative;
+    }
+    .sp-greatings{
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .sidenav-img{
+        display: none;
+        margin: 75px 0 0 35px; 
+        width: 130px;
+    }
+    ul.sidebar-menu {
+        margin-top: 75px;
+    }
+ 
+}

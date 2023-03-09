@@ -8,9 +8,6 @@ use App\Models\UserStatus;
 use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 
-
-
-
 class AccountManagementController extends Controller
 {
 

@@ -42,6 +42,7 @@
         </header>
       <aside>
           <div id="sidebar" class="nav-collapse ">
+            <img id="logo" src="{{ asset('/BRGY MAMATID LOGO.png') }}"  class="sidenav-img" style="">
             <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
                 @if(Auth::user()->user_role == 1)
