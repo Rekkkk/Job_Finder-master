@@ -5,9 +5,9 @@
     .dashboard{
         cursor: pointer;
     }
-    /* .item-details{
+    .item-details{
         max-height: 175px;
-    } */
+    }
 </style>
 
 <div class="container-fluid p-4">
