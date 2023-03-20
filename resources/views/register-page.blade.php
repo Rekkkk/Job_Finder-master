@@ -81,12 +81,17 @@
                                         <a href="{{ route('login.page') }}" class="h6 ">Already have an account? Login</a>  
                                     </form>
                                 </div>
-                                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                                    <img src="{{ asset('/BRGY MAMATID LOGO.png') }}" class="img-fluid" style="border-radius: 10px " alt="Sample image">
+                                <div class="col-md-10 col-lg-6 col-xl-7 order-1 order-lg-2" style="text-align: center;">
+                                    <img src="{{ asset('/BRGY MAMATID LOGO.png') }}" width="200" height="180" alt=""><br>
+                                    <p class="m-auto p-4" style="font-size: 17px; max-width: 450px;">Welcome applicants! If you want to register as an applicant account you're able to submit your resume/application here. But this is monitored by our Administrator if you entered a wrong information and your accoun has been reported, your account will be suspended for 7days, and if you're not changing it your account will be disable by our administrator. <br><br>
+
+                                        All of the information that you entered has been monitored by the Admin. <br><br>
+                                        
+                                        Have a nice day! Goodluck for your new journey!</p>
                                 </div>
                             </div>
                         </div>
-
+ 
                         @if($page == 2)
                             <div id="employer" class="container tab-pane active"><br>
                         @else
@@ -107,7 +112,7 @@
                                                 <input type="file" class="custom-file-input " id="customFile" name="employer_id[]" accept="image/*" multiple required>
                                                 <label class="custom-file-label" for="customFile">Upload your ID</label>
                                             </div>
-                                        <label class="form-label h6 mb-3"><b>Your Company ID</b></label>
+                                        <label class="form-label h6 mb-3"><b>Your Company ID/ Company Profile</b></label>
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
@@ -146,8 +151,14 @@
                                         <a href="{{ route('login.page') }}" class="h6 ">Already have an account? Login</a>  
                                     </form>
                                 </div>
-                                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                                    <img src="{{ asset('/BRGY MAMATID LOGO.png') }}" class="img-fluid" style="border-radius: 10px " alt="Sample image">
+                                <div class="col-md-10 col-lg-6 col-xl-7 order-1 order-lg-2" style="text-align: center;">
+                                    <img src="{{ asset('/BRGY MAMATID LOGO.png') }}" width="200" height="180" alt=""><br>
+                                    <p class="text-center m-auto p-4" style="font-size: 17px; max-width: 480px;">
+                                        If you register as an employer account make sure that you're aware of our policy. If you post malicious content, false hiring or including fake company information your account will be suspended for 7 days, and if you continue your wrong doings we'll disabled your account. <br><br>
+
+                                        All of the information that you entered will be reviewed by our administrator. Make sure that you'll give us correct information to avoid account suspension or disabling your account. <br><br>
+                                        
+                                        Our policy is for the safety of our users including you and especially our applicant users for them to avoid fake information in this Job Hiring Website.</p>
                                 </div>
                             </div>
                         </div>

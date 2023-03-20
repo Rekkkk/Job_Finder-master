@@ -44,7 +44,9 @@ class AuthController extends Controller
                 return redirect()->route('login.page')->withErrors(['msg' => 'Your account has banned']);
             }
             elseif(Auth::user()->userStatus->is_suspend == 1){
+                
                 if(Auth::user()->userStatus->suspend_end < Carbon::now()){
+                   
                     UserStatus::where('user_id', '=',  Auth::user()->user_id)
                     ->update(['is_suspend' => 0,'suspend_end' => null]);
 
@@ -126,12 +128,7 @@ class AuthController extends Controller
                 return view('/register-page',  compact('page', 'name1', 'name2'));
     
             }
-
-            // $imageName = time().'.'.$request->employer_id->getClientOriginalExtension();
-            // $request->employer_id->move(public_path('/id'), $imageName);
-
         
-            
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,

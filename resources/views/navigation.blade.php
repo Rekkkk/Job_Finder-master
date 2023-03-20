@@ -26,6 +26,9 @@
                 <li class="nav-item">
                     <a class="nav-link h6" href="{{ route('aboutus.page') }}">About us</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link h6" href="{{ route('home') }}">Home</a>
+                </li>
           
                 <li class="nav-item">
                     <a class="nav-link h6" href="{{ route('register.page') }}">Register</a>

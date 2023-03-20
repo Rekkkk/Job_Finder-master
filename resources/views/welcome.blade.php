@@ -20,5 +20,37 @@
                 </div>  
             </div>
         </div>
+        <div class="row job-items">
+            <div class="col mt-4">
+                <div class="text-center">
+                    <img src="{{ asset('/images/1.jpg') }}" class="text-center" width="210" height="200">
+                </div>
+            </div>
+            <div class="col mt-4">
+                <div class="text-center">
+                    <img src="{{ asset('/images/2.png') }}" class="text-center" width="210" height="200">
+                </div>
+            </div>
+            <div class="col mt-4">
+                <div class="text-center">
+                    <img src="{{ asset('/images/3.png') }}" class="text-center" width="210" height="200">
+                </div>
+            </div>
+            <div class="col mt-4">
+                <div class="text-center">
+                    <img src="{{ asset('/images/4.png') }}" class="text-center" width="210" height="200">
+                </div>
+            </div>
+            <div class="col mt-4">
+                <div class="text-center">
+                    <img src="{{ asset('/images/5.png') }}" class="text-center" width="210" height="200">
+                </div>
+            </div>
+            <div class="col mt-4">
+                <div class="text-center">
+                    <img src="{{ asset('/images/6.png') }}" class="text-center" width="210" height="200">
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

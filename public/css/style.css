@@ -254,7 +254,6 @@ input[type=file]{
     position: absolute;
 }
 .side-logo{
-   
     width: 100%;
     max-width: 250px;
     height: 240px;
@@ -278,6 +277,9 @@ input[type=file]{
     .sp-greatings{
         margin-top: 30px;
     }
+    .job-items:last-child{
+        margin-bottom: 20px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -289,5 +291,13 @@ input[type=file]{
     ul.sidebar-menu {
         margin-top: 75px;
     }
- 
+}
+@media only screen and (max-width: 580px) {
+    .bsit{
+        float: none;
+    }
+    .div-logo{
+        margin: auto;
+        text-align: center;
+    }
 }

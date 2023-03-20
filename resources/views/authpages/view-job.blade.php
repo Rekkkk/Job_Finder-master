@@ -60,7 +60,7 @@
                                 @csrf
                                 <div class="row mt-2">
                                     <div class="col-lg-12">
-                                        <label for="confirm-password" class="modal-text">Upload your Resume</label>  
+                                        <label for="confirm-password" class="modal-text">Upload your Resume <span class="text-danger">*Required</span></label>  
                                     </div>
                                 </div>  
                                 <div class="row">
@@ -77,7 +77,7 @@
                                 </div>   
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <label for="confirm-password" class="modal-text">Upload your Requirements</label>  
+                                        <label for="confirm-password" class="modal-text">Upload your Requirements (<span class="text-danger">Optional</span>)</label>  
                                     </div>
                                 </div>  
                                 <div class="row">
