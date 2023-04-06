@@ -85,7 +85,7 @@
                                         
                                         <div class="custom-file mb-3" style="height: 100px;">
                                             
-                                            <input type="file" style="height: 100px;"  class="custom-file-input " id="customFile" name="requirements[]" accept="application/pdf" required multiple>
+                                            <input type="file" style="height: 100px;"  class="custom-file-input " id="customFile" name="requirements[]" accept="application/pdf" multiple>
                                             
                                             <label class="custom-file-label" for="customFile" style="height: 100px;">Drop your requirements here</label>
                                            

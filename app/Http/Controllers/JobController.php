@@ -185,16 +185,18 @@ class JobController extends Controller
         $pdf->user_id = Auth::user()->user_id;
         $pdf->save();
 
-        foreach ($request->file('requirements') as $files) {
-            $requirements = new Requirements;
-            $path = $files->store('/', ['disk' =>   'pdf']);
-            $requirements->pdf = $path;
-            $requirements->pdf_description = "Other Requirements";
-            $requirements->job_id = $job->job_id;
-            $requirements->user_id = Auth::user()->user_id;
-            $requirements->save();
+        if($request->file('requirements') != null){
+            foreach ($request->file('requirements') as $files) {
+                $requirements = new Requirements;
+                $path = $files->store('/', ['disk' =>   'pdf']);
+                $requirements->pdf = $path;
+                $requirements->pdf_description = "Other Requirements";
+                $requirements->job_id = $job->job_id;
+                $requirements->user_id = Auth::user()->user_id;
+                $requirements->save();
+            }
         }
-
+       
         $data = [
             "name" => $employer->name,
             "job-title" => $job->job_title,

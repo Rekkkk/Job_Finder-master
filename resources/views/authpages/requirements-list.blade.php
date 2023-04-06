@@ -18,11 +18,15 @@
                     @endif
                 @endforeach
                 <h4><b>Other Requirements</b> </h4>
-                @foreach ($requirements as $requirement)
-                    @if($requirement->pdf_description == "Other Requirements")
-                        <h6><a href="{{ asset('pdf/'.$requirement->pdf) }}" target="_blank">{{ $requirement->pdf }}</a></h6>
-                    @endif
-                @endforeach
+                @if($requirements->where('pdf_description', 'Other Requirements')->count() != 0)
+                    @foreach ($requirements as $requirement)
+                        @if($requirement->pdf_description == "Other Requirements")
+                            <h6><a href="{{ asset('pdf/'.$requirement->pdf) }}" target="_blank">{{ $requirement->pdf }}</a></h6>
+                        @endif
+                    @endforeach
+                @else
+                <h5>No Uploaded Documents.</h5>
+                @endif
             </div>
         </div>
     </div>

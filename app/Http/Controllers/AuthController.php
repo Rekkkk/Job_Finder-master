@@ -256,22 +256,28 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        $chars      = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_?,.";
-        $rand_chars = substr( str_shuffle( $chars ), 0, 12 );
-
-        $password =  $rand_chars;
-
-        $user->password = Hash::make($password);
-        $user->save();
-
-        $data = [
-            "name" => $user->name,
-            "password" => $password
-        ];
-
-        Mail::to($user->email)->send(new ForgotPassword($data));
-
-        Alert::success('Success','New password send successfully to your email !');
+        if($user){
+            $chars      = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_?,.";
+            $rand_chars = substr( str_shuffle( $chars ), 0, 12 );
+    
+            $password =  $rand_chars;
+    
+            $user->password = Hash::make($password);
+            $user->save();
+    
+            $data = [
+                "name" => $user->name,
+                "password" => $password
+            ];
+    
+            Mail::to($user->email)->send(new ForgotPassword($data));
+    
+            Alert::success('Success','New password send successfully to your email !');
+    
+            
+        }else{
+            Alert::html('error','Cannot find your account please try again.', 'error');
+        }
 
         return back();
 
