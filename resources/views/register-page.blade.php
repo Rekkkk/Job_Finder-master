@@ -10,20 +10,16 @@
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             @if($page == 1)
-                            <a class="nav-link active h6" data-toggle="tab" href="#applicant">Applicant</a>
-
+                                <a class="nav-link active h6" data-toggle="tab" href="#applicant">Applicant</a>
                             @else
-                            <a class="nav-link  h6" data-toggle="tab" href="#applicant">Applicant</a>
-
+                                <a class="nav-link  h6" data-toggle="tab" href="#applicant">Applicant</a>
                             @endif
                         </li>
                         <li class="nav-item">
                             @if($page == 2)
-                            <a class="nav-link active h6" data-toggle="tab" href="#employer">Employer</a>
-
+                                <a class="nav-link active h6" data-toggle="tab" href="#employer">Employer</a>
                             @else
-                            <a class="nav-link h6" data-toggle="tab" href="#employer">Employer</a>
-
+                                <a class="nav-link h6" data-toggle="tab" href="#employer">Employer</a>
                             @endif
                         </li>
                     </ul>
@@ -83,11 +79,7 @@
                                 </div>
                                 <div class="col-md-10 col-lg-6 col-xl-7 order-1 order-lg-2" style="text-align: center;">
                                     <img src="{{ asset('/BRGY MAMATID LOGO.png') }}" width="200" height="180" alt=""><br>
-                                    <p class="m-auto p-4" style="font-size: 17px; max-width: 450px;">Welcome applicants! If you want to register as an applicant account you're able to submit your resume/application here. But this is monitored by our Administrator if you entered a wrong information and your accoun has been reported, your account will be suspended for 7days, and if you're not changing it your account will be disable by our administrator. <br><br>
-
-                                        All of the information that you entered has been monitored by the Admin. <br><br>
-                                        
-                                        Have a nice day! Goodluck for your new journey!</p>
+                                    <img src="{{ asset('/warning.png') }}" width="450" height="350" alt=""><br>
                                 </div>
                             </div>
                         </div>
@@ -153,12 +145,7 @@
                                 </div>
                                 <div class="col-md-10 col-lg-6 col-xl-7 order-1 order-lg-2" style="text-align: center;">
                                     <img src="{{ asset('/BRGY MAMATID LOGO.png') }}" width="200" height="180" alt=""><br>
-                                    <p class="text-center m-auto p-4" style="font-size: 17px; max-width: 480px;">
-                                        If you register as an employer account make sure that you're aware of our policy. If you post malicious content, false hiring or including fake company information your account will be suspended for 7 days, and if you continue your wrong doings we'll disabled your account. <br><br>
-
-                                        All of the information that you entered will be reviewed by our administrator. Make sure that you'll give us correct information to avoid account suspension or disabling your account. <br><br>
-                                        
-                                        Our policy is for the safety of our users including you and especially our applicant users for them to avoid fake information in this Job Hiring Website.</p>
+                                    <img src="{{ asset('/warning.png') }}" width="450" height="350" alt=""><br>
                                 </div>
                             </div>
                         </div>
