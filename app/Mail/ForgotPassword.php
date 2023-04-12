@@ -29,7 +29,7 @@ class ForgotPassword extends Mailable
      */
     public function build()
     {
-        return $this->from('job_finder@email.com', 'Job Finder')
+        return $this->from('job_finder@email.com', 'Barangay Employment Service Office')
                     ->subject('Forgot Password')->view('mail.forgot-password');
     }
 }

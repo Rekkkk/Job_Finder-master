@@ -28,7 +28,7 @@ class ApplicantNotification extends Mailable
      */
     public function build()
     {
-        return $this->from('job_finder@email.com', 'Job Finder')
+        return $this->from('job_finder@email.com', 'Barangay Employment Service Office')
                     ->subject('Application Status')->view('mail.email-template');
     }
 }
