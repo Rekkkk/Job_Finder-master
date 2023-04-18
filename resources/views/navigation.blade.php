@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 
-    <title>Job Finder</title>
+    <title>BESU</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
         <a class="navbar-brand d-flex" href="{{ route('home') }}">
             <img src="{{ asset('/logo.png') }}" style="width:55px;" >
-            <h3 class="ml-3 mt-2"><b>Job Finder</b></h3>
+            <h4 class="ml-3 mt-2"><b>Barangay Employement Service Unit</b></h4>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -49,24 +49,17 @@
 
     <footer class="text-white text-center text-lg-start" style="background-color: #23242a;">
     <div class="container p-4">
-        <!--Grid row-->
         <div class="row mt-4">
-          <div class="col-lg-12 col-md-12 mb-4 mb-md-0">
-            <h5 class="text-uppercase mb-4">JOB FINDER PHILIPPINES</h5>
+            <div class="col-lg-12 col-md-12 mb-4 mb-md-0">
+                <h5 class="text-uppercase mb-4">BESU Mamatid</h5>
+            </div>
         </div>
-
-        </div>
-        
     </div>
-  
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2022 Copyright :
-        <a>JOB FINDER</a>
+        <a>BESU Mamatid</a>
       </div>
-      <!-- Copyright -->
     </footer>
-    {{-- <script src="{{ asset('/js/jquery/jquery.slim.min.js') }}"></script> --}}
     <script src="{{ asset('/js/jquery/bootstrap.bundle.min.js') }}"></script>
-    {{-- <script src="{{ asset('/js/jquery/jquery_3.6.0.js') }}"></script> --}}
 </body>
 </html>
