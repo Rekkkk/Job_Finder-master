@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JOB FINDER</title>
-    <link rel="icon" href="{{ asset('/logo.png') }}">
+    <link rel="icon" href="{{ asset('/Logo.jpg') }}">
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <script src="{{ asset('/js/jquery/jquery_3.6.0.js') }}"></script>
     <script src="{{ asset('/js/jquery/bootstrap.bundle.min.js') }}"></script>
@@ -13,16 +13,13 @@
     <link href="{{ asset('/css/style-responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/dataTables.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/css/dashboard.css') }}">
-
 </head>
 <body>
     <section id="container">
         <header class="header black-bg">
-        
             <div class="row">
                 <div class="col-2">
-                    <a href="{{ route('dashboard') }}" class="logo mt-3"> <img src="{{ asset('/logo.png') }}" style="width: 35px;" class="rounded-pill"> <b> Job Finder</b></a>
-
+                    <a href="{{ route('dashboard') }}" class="logo mt-3"> <img src="{{ asset('/Logo.jpg') }}" style="width: 35px;" class="rounded-pill"> <b> Job Finder</b></a>
                 </div>
                 <div class="col-8 m-auto">
                     <ul class="nav justify-content-center" >

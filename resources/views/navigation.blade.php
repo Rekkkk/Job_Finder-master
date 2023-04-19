@@ -4,19 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">  
-    <link rel="icon" href="{{ asset('/logo.png') }}">
-
+    <link rel="icon" href="{{ asset('/Logo.jpg') }}">
     <script src="{{ asset('/js/jquery/jquery_3.6.0.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
-
     <title>BESU</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
         <a class="navbar-brand d-flex" href="{{ route('home') }}">
-            <img src="{{ asset('/logo.png') }}" style="width:55px;" >
-            <h4 class="ml-3 mt-2"><b>Barangay Employement Service Unit</b></h4>
+            <img src="{{ asset('/Logo.jpg') }}" class="rounded-circle" style="width:55px;">
+            <h4 class="ml-3 mt-3"><b>Barangay Employement Service Unit</b></h4>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>

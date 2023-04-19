@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JOB FINDER</title>
-    <link rel="icon" href="{{ asset('/logo.png') }}">
+    <link rel="icon" href="{{ asset('/Logo.jpg') }}">
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <script src="{{ asset('/js/jquery/jquery_3.6.0.js') }}"></script>
     <script src="{{ asset('/js/jquery/bootstrap.bundle.min.js') }}"></script>
@@ -20,14 +20,14 @@
             <div class="sidebar-toggle-box">
                 <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
             </div>
-            <a href="{{ route('job.list') }}" class="logo"> <img src="{{ asset('/logo.png') }}" style="width: 35px;" class="rounded-pill"> <b> Job Finder</b></a>
+            <a href="{{ route('job.list') }}" class="logo"> <img src="{{ asset('/Logo.jpg') }}" style="width: 35px;" class="rounded-pill"> <b> Job Finder</b></a>
             <ul class="navbar-nav flex-row-reverse m-3 h6">
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:white">
                          <i class="fa fa-user"></i>
                          <span class="ml-2">{{Auth::user()->name}}</span>
                     </a>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu text-center">
                         <a class="dropdown-item" href="{{ route('edit.account.page') }}">
                             <i class="fa fa-user-circle-o"></i>
                             <span class="ml-2">My Account</span>
