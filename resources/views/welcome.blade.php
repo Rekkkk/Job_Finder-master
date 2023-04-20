@@ -9,7 +9,7 @@
     <div class="container main-content">
         <div class="div-logo">
             <img id="logo" src="{{ asset('/BRGY MAMATID LOGO.png') }}" class="side-logo">
-            <img id="logo" src="{{ asset('/BSIT LOGO.png') }}" class="side-logo bsit" >
+            <img id="logo" src="{{ asset('/Logo.jpg') }}" class="side-logo bsit" >
         </div>
         <div class="row pt-5 pb-5 ">
             <div class="col-xl-12">
