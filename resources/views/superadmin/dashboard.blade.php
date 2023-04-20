@@ -22,7 +22,7 @@
     </div>
   <div class="div-logo">
     <img id="logo" src="{{ asset('/BRGY MAMATID LOGO.png') }}" class="side-logo">
-    <img id="logo" src="{{ asset('/BSIT LOGO.png') }}" class="side-logo bsit" >
+    <img id="logo" src="{{ asset('/Logo.jpg') }}" class="side-logo bsit" >
 </div>
 
   <div class="row sp-greatings">
@@ -60,7 +60,7 @@
                 </div>
                 <div class="row align-items-center">
                     <div class="col-12 text-right " >
-                        <h2>{{$applicant}}</h2>
+                        <h2>{{$employer}}</h2>
                     </div>
                 </div>
             </div>

@@ -179,8 +179,8 @@ class AuthController extends Controller
     public function dashboard(){
 
         $reportedJobs = Job::where('num_reports', '>', 0)->count();
-        $employer = User::where('user_role', 0)->count();
-        $applicant = User::where('user_role', 1)->count();
+        $employer = User::where('user_role', 1)->count();
+        $applicant = User::where('user_role', 0)->count();
 
         return view('/superadmin/dashboard', compact('reportedJobs', 'employer' ,'applicant'));
         
