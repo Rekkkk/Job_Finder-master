@@ -42,10 +42,8 @@
                 @foreach($job->user as $applicant)    
                     @if($applicant->pivot->is_accepted == 0 && $applicant->pivot->is_decline == 0)
                         <tr>                           
-                            <td style="font-size: 17px;">{{ $applicant->name}}</td>
-                            <td>
-                                {{-- <a href="{{ route('accept.applicant', ['user' => $applicant->user_id, 'job' => $job] ) }}" class="btn btn-success" style="height: 30px; font-size:12px">Accept</a> --}}
-                               
+                            <td style="font-size: 17px; text-transform: capitalize;" >{{ $applicant->name}}</td>
+                            <td>                               
                                 <a href=""
                                     data-applicant="{{$applicant->user_id}}"  
                                     data-toggle="modal" 

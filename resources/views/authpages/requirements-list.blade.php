@@ -6,7 +6,7 @@
     <div class="container-fluid p-4">
         <div class="row">
             <div class="col">
-                <h1><b>Applicant Name : </b><span>{{ $applicant->name }}</span></h1>
+                <h1><b>Applicant Name : </b><span style="text-transform: uppercase">{{ $applicant->name }}</span></h1>
             </div>
         </div><hr>
         <div class="row">
