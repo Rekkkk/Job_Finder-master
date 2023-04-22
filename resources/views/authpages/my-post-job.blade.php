@@ -9,6 +9,7 @@
             <thead>
                 <tr>    
                     <th>Job Title</th>
+                    <th>Address</th>
                     <th>Applicant</th>
                     <th>Date Posted</th>       
                 </tr>
@@ -18,6 +19,7 @@
                     
                 <tr onclick="window.location='{{ route('view.my.post', $job) }}';">                           
                         <td style="font-size: 18px;">{{ $job->job_title }}</td>
+                        <td style="font-size: 18px;">{{ $job->company_address }}</td>
                         <td style="font-size: 18px;">{{ $job->user->count() }}</td>
                         <td style="font-size: 18px;">{{date('F d, Y', strtotime($job->created_at))}}</td>                                                       
                 </tr>
