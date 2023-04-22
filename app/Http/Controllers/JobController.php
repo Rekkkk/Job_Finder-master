@@ -258,6 +258,7 @@ class JobController extends Controller
 
     public function updateJob(Request $request, Job $job){
 
+        // dd($request->company_address);
         $job = Job::find($job->job_id);
 
         $request->validate([

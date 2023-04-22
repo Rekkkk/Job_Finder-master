@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col">
                         <label class="title-detail">Company Address :  </label>
-                        <input name="company_address" class="form-control" type="text" value={{ $job->company_address }}>
+                        <input name="company_address" class="form-control" type="text" value="{{ $job->company_address }}">
                         @if ($errors->has('company_address'))
                             <span class="text-danger">{{ $errors->first('company_address') }}</span>
                         @endif
