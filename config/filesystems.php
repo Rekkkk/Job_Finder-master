@@ -60,10 +60,13 @@ return [
             'driver' => 'local',
             'root'   => public_path() . '/pdf'
         ],
-
         'employer_id' => [
             'driver' => 'local',
             'root'   => public_path() . '/id'
+        ],
+        'profile-picture' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/profile'
         ],
 
     ],

@@ -23,13 +23,10 @@ class AuthController extends Controller
 {
 
     public function required(){
-
         return view('/login-page')->withErrors(['msg' => 'You must Login First !']);
-
     }
     
     public function login(Request $request){
-
         $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -38,13 +35,11 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if(Auth::attempt($credentials)) {
-         
             if(Auth::user()->userStatus->is_disable == 1){
                 Auth::logout();
                 return redirect()->route('login.page')->withErrors(['msg' => 'Your account has banned']);
             }
             elseif(Auth::user()->userStatus->is_suspend == 1){
-                
                 if(Auth::user()->userStatus->suspend_end < Carbon::now()){
                    
                     UserStatus::where('user_id', '=',  Auth::user()->user_id)
@@ -62,9 +57,7 @@ class AuthController extends Controller
             }
         }
         else{
-
             Alert::html('error','Invalid username or password', 'error');
-
             return redirect()->route('login.page')->withInput();
         }
     }
@@ -73,9 +66,10 @@ class AuthController extends Controller
 
         $name1 = "";
         $name2 = "";
+        $name3 = "";
         $page = 1;
         
-        return view('/register-page',  compact('page', 'name1' , 'name2'));
+        return view('/register-page',  compact('page', 'name1' , 'name2', 'name3'));
 
     }
 
@@ -96,37 +90,18 @@ class AuthController extends Controller
 
         $emailUnique = User::where('email', $request->email)->first();
 
-        if($request->employer_id == null){
-
+        if($request->employer_id != null){
             if($emailUnique){
 
                 Alert::html('error','Your Email is taken by others please use unique email !', 'error');
 
-                $name1 = $request->name;
-                $name2 = "";
-                $page = 1;
-                
-                return view('/register-page',  compact('page', 'name1', 'name2'));
-
-            }
-            User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'user_role' => 0
-            ]);
-        }else{ 
-
-            if($emailUnique){
-
-                Alert::html('error','Your Email is taken by others please use unique email !', 'error');
-
-                $name2 = $request->name;
                 $name1 = "";
+                $name2 = $request->name;
+                $name3 = "";
+                
                 $page = 2;
                 
-                return view('/register-page',  compact('page', 'name1', 'name2'));
-    
+                return view('/register-page',  compact('page', 'name1', 'name2', 'name3'));    
             }
         
             User::create([
@@ -144,6 +119,47 @@ class AuthController extends Controller
                 $image->save();
             }
         }
+        else if($request->admin_id != null){
+            if($emailUnique){
+
+                Alert::html('error','Your Email is taken by others please use unique email !', 'error');
+
+                $name1 = "";
+                $name2 = "";
+                $name3 = $request->name;
+                $page = 3;
+                
+        
+                return view('/register-page',  compact('page', 'name1', 'name2', 'name3'));
+
+            }
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'user_role' => 2
+            ]);
+        }
+        else{ 
+
+            if($emailUnique){
+                Alert::html('error','Your Email is taken by others please use unique email !', 'error');
+                $name1 = $request->name;
+                $name2 = "";
+                $name3 = "";
+                $page = 1;
+                
+                return view('/register-page',  compact('page', 'name1', 'name2', 'name3'));
+
+            }
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'user_role' => 0
+            ]);
+           
+        }
 
         
         UserStatus::create([
@@ -159,12 +175,10 @@ class AuthController extends Controller
     }
 
     public function jobList(){
-
         if(Auth::check()){
-            if(Auth::user()->user_role == 2){
-
+            
+            if(Auth::user()->user_role == 2 || Auth::user()->user_role == 3  ){
                 return redirect()->route('dashboard');
-
             }
             elseif(Auth::user()->user_role == 1){
                 return redirect()->route('my.job.posted');
@@ -188,7 +202,7 @@ class AuthController extends Controller
 
     public function changeAccountDetailsPage(User $user){
 
-        if(Auth::user()->user_role == 2){
+        if(Auth::user()->user_role == 2 || Auth::user()->user_role == 3){
             return view('/superadmin/my-account', compact('user'));
         }else{
             return view('/authpages/my-account', compact('user'));
@@ -243,6 +257,23 @@ class AuthController extends Controller
         $userLogin->save();
 
         Alert::success('Success', 'Name Change Successfully !');
+
+        return back();;
+
+    }
+
+    public function changeProfile(Request $request){
+
+        $request->validate([
+            'profile' => 'required',
+        ]);
+
+        $userLogin = User::find(Auth::user()->user_id);
+        $path = $request->file('profile')->store('/', ['disk' => 'profile-picture']);
+        $userLogin->profile = $path;
+        $userLogin->save();
+
+        Alert::success('Success', 'Profile Change Successfully !');
 
         return back();;
 

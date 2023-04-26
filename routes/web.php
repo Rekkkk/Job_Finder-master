@@ -47,6 +47,7 @@ Route::group(['prefix' => 'logged-in', 'middleware' => 'auth'], function()
         Route::get('/edit-account', 'changeAccountDetailsPage')->name('edit.account.page');
         Route::post('/edit-name', 'changeName')->name('edit.name');
         Route::post('/change-password', 'changePassword')->name('change.password');
+        Route::post('/change-profile', 'changeProfile')->name('change.profile');
         Route::get('/logout', 'logout')->name('logout');
 
     });

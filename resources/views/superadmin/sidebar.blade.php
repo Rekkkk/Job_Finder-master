@@ -38,12 +38,13 @@
                       </ul>
                 </div>
                 <div class="col-2">
+                    
                     <ul class="navbar-nav flex-row-reverse m-3 h6">
-                
+                       
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:white">
-                                 <i class="fa fa-user"></i>
-                                 <span class="ml-2">{{Auth::user()->name}}</span>
+                                <i class="fa fa-user"></i>
+                                <span class="ml-2">{{Auth::user()->name}}</span>
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{{ route('edit.account.page') }}">
@@ -59,63 +60,7 @@
                     </ul>
                 </div>
             </div>
-            
-            {{-- <div class="mr-5">
-                <a href="{{ route('dashboard') }}" class="logo"> <img src="{{ asset('/logo.png') }}" style="width: 35px;" class="rounded-pill"> <b> Job Finder</b></a>
-                <a href="{{ route('dashboard') }}" class="logo"> <img src="{{ asset('/logo.png') }}" style="width: 35px;" class="rounded-pill"> <b> Job Finder</b></a>
-                <a href="{{ route('dashboard') }}" class="logo"> <img src="{{ asset('/logo.png') }}" style="width: 35px;" class="rounded-pill"> <b> Job Finder</b></a>
-    
-            </div> --}}
-
-            
-            {{-- <ul class="navbar-nav " style="margin-left: 80%;margin-top: 10px; font-size:15px"> --}}
-          
-            
-            
-            
         </header>
-        
-      {{-- <aside>
-          <div id="sidebar" class="nav-collapse ">
-            <!-- sidebar menu start-->
-              <ul class="sidebar-menu" id="nav-accordion">
-                <li>
-                    <a href="{{ route('dashboard') }}">
-                        <i class="fa fa-dashboard"></i>
-                        <span>DASHBOARD</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('report.post.management') }}">
-                        <i class="fa fa-briefcase"></i>
-                        <span>REPORTED POST</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('account.management') }}">
-                        <i class="fa fa-list"></i>
-                        <span>ACCOUNT MANAGEMENT</span>
-                    </a>
-                </li>
-              </ul>
-          </div>
-      </aside> --}}
-      {{-- <section class="wrapper site-min-height">
-        <div class="row mt">
-            <div class="col-lg-12">
-                @yield('content')
-            </div>
-        </div><br><br><br>
-        <footer class="site-footer">
-            <div class="text-center">
-                <p> 
-                    &copy; <strong>Job Finder</strong>. All Rights Reserved 2022
-                </p>
-            </div>
-        </footer>
-        
-    </section> --}}
-   
           <section class="wrapper site-min-height">
               <div class="row mt">
                   <div class="col-lg-12">

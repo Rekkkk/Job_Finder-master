@@ -24,9 +24,9 @@ body {
     font-size:13px;
 }
 
-ul li {
+/* ul li {
     list-style: none;
-}
+} */
 ::-moz-selection {
     background: #4ECDC4;
     color: #fff;
@@ -58,7 +58,6 @@ ul li {
 .mb {
 	margin-bottom: 25px;
 }
-
 
 
 /*sidebar navigation*/
@@ -269,6 +268,35 @@ input[type=file]{
 .sidenav-img{
     margin: 75px 0 0 35px; 
     width: 130px;
+    height: 120px
+}
+
+#navbardrop::before {
+    height: 20px;
+    width: 20px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    content: '';
+    left: -25%;
+}
+#navbardrop-employer::before {
+    height: 20px;
+    width: 20px;
+    background-color: blue;
+    border-radius: 50%;
+    position: absolute;
+    content: '';
+    left: -25%;
+}
+#navbardrop-applicant::before {
+    height: 20px;
+    width: 20px;
+    background-color: green;
+    border-radius: 50%;
+    position: absolute;
+    content: '';
+    left: -25%;
 }
 @media only screen and (max-width: 1230px) {
     .div-logo{

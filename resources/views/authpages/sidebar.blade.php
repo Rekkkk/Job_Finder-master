@@ -23,7 +23,11 @@
             <a href="{{ route('job.list') }}" class="logo"> <img src="{{ asset('/Logo.jpg') }}" style="width: 35px;" class="rounded-pill"> <b> Job Finder</b></a>
             <ul class="navbar-nav flex-row-reverse m-3 h6">
                 <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:white">
+                    @if(Auth::user()->user_role == 1)
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop-employer" data-toggle="dropdown" style="color:white">
+                    @else
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop-applicant" data-toggle="dropdown" style="color:white">
+                    @endif
                          <i class="fa fa-user"></i>
                          <span class="ml-2">{{Auth::user()->name}}</span>
                     </a>
@@ -42,7 +46,9 @@
         </header>
       <aside>
           <div id="sidebar" class="nav-collapse ">
-            <img id="logo" src="{{ asset('/BRGY MAMATID LOGO.png') }}"  class="sidenav-img" style="">
+            <img src="/profile/{{Auth::user()->profile}}" id="logo" class="sidenav-img">
+            <p class="h5 text-white text-center mt-2" style="text-transform: uppercase;">{{ Auth::user()->name }}</p>
+            <img id="logo" src="{{ asset('/BRGY MAMATID LOGO.png') }}"  class="sidenav-img" style=" margin-top: 0px;">
             <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
                 @if(Auth::user()->user_role == 1)

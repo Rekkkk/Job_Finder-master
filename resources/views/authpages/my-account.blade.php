@@ -3,15 +3,31 @@
 @section('content')
 @include('sweetalert::alert')
     <div class="container-fluid" style="padding: 65px 80px 20px 80px;">
-        <form action="{{ route('edit.name') }}" method="POST">
             @csrf
             <div class="m-auto" style="width: 350px">
                 <div class="row mt-2">
                     <div class="col-lg-12 text-center">
                         <label class="modal-text h5 ">Edit My Account Details</label>
-                    
                     </div>                              
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="text-center">
+                            @if(Auth::user()->profile != null)
+                                <img src="/profile/{{Auth::user()->profile}}" alt="profile" id="profile" style="border-radius: 50%; width: 200px; height: 180px;">
+                            @else
+                                <img src="/profile/default.jpg" alt="profile" id="profile" style="border-radius: 50%; width: 200px; height: 180px;">
+                            @endif
+                            <form action="{{ route('change.profile') }}" method="POST"  enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" class="mt-3" name="profile" onchange="loadFile(event)" accept="image/*" id="file" accept=""> 
+                                <input type="submit" class="btn btn-success" id="" value="Save" name="" id="">
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <form action="{{ route('edit.name') }}" method="POST">
                 <div class="row mt-2">
                     <div class="col-lg-12">
                         <label class="modal-text">Name : </label>
@@ -72,6 +88,10 @@
     </form>    
 </div>
 <script>
+    var loadFile = function (event) {
+            var image = document.getElementById("profile");
+            image.src = URL.createObjectURL(event.target.files[0]);
+    };
     $(document).ready(function(){
         $("#show-password").click(function(){
             if("password"== $(".password").attr("type")){
