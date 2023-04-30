@@ -26,7 +26,7 @@
                     <th>Remarks</th> 
                 </tr>
             </thead>
-            <tbody id="myTable" style="cursor: pointer">
+            <tbody id="myTable">
                 @foreach($listOfUser as $user)  
                 <tr>                            
                     <td >ADM-0{{ $user->user_id }}</td>

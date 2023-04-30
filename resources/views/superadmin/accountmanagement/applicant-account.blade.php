@@ -24,7 +24,7 @@
                     <th>Actions</th>    
                 </tr>
             </thead>
-            <tbody id="myTable" style="cursor: pointer">
+            <tbody id="myTable">
                 @foreach($listOfUser as $user)       
                 <tr>                            
                         <td >APL-{{ $user->user_id }}</td>

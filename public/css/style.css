@@ -277,7 +277,7 @@ input[type=file]{
     border-radius: 50%;
     position: absolute;
     content: '';
-    left: -25%;
+    left: -35px;
 }
 #navbardrop-employer::before {
     height: 20px;
@@ -286,7 +286,7 @@ input[type=file]{
     border-radius: 50%;
     position: absolute;
     content: '';
-    left: -25%;
+    left: -35px;
 }
 #navbardrop-applicant::before {
     height: 20px;
@@ -295,7 +295,7 @@ input[type=file]{
     border-radius: 50%;
     position: absolute;
     content: '';
-    left: -25%;
+    left: -35px;
 }
 .btn-admin{
     font-size: 11px; 

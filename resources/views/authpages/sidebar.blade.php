@@ -60,7 +60,7 @@
             <p class="h5 text-white text-center mt-2" style="text-transform: uppercase;">{{ Auth::user()->name }}</p>
             <img id="logo" src="{{ asset('/BRGY MAMATID LOGO.png') }}"  class="sidenav-img" style=" margin-top: 0px;">
             <!-- sidebar menu start-->
-              <ul class="sidebar-menu" id="nav-accordion">
+              <ul class="sidebar-menu list-unstyled" id="nav-accordion">
                 @if(Auth::user()->user_role == 1)
                     <li style=" border: 2px solid #ffffff; border-radius: 10px;">
                         <a href="{{ route('my.job.posted') }}">

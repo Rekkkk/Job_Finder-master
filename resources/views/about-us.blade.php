@@ -85,7 +85,7 @@
             <div class="col">
                 <div class="text-center">
                     <img src="{{ asset('/images/Jan Rovic.png') }}" class="rounded" width="210" height="200">
-                    <p class="mt-2 devs"> <b>Jan Rovie S. Garcia</b><br>
+                    <p class="mt-2 devs"> <b>Jan Rovic S. Garcia</b><br>
                         Programmer
                     </p>
                 </div>  
