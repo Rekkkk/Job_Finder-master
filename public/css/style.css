@@ -295,7 +295,7 @@ input[type=file]{
     border-radius: 50%;
     position: absolute;
     content: '';
-    left: -15%;
+    left: -25%;
 }
 .btn-admin{
     font-size: 11px; 

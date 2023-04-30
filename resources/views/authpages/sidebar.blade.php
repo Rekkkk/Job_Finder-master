@@ -17,14 +17,16 @@
 <body>
     <section id="container">
         <header class="header black-bg d-flex justify-content-between">
-            <div class="d-flex align-items-center hover-effect" onclick="window.location='{{ route('home') }}';">
+            <div class="d-flex align-items-center hover-effect" >
                 <div class="sidebar-toggle-box">
                     <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
                 </div>
-                <img src="{{ asset('/Logo.jpg') }}" style="width: 35px;" class="rounded-pill mr-2"> 
-                <p class="text-white font-weight-bold h5" style="margin: 0px;">Barangay Employement Service Unit</p>
+                <div class="d-flex align-items-center" onclick="window.location='{{ route('home') }}';">
+                    <img src="{{ asset('/Logo.jpg') }}" style="width: 35px;" class="rounded-pill mr-2"> 
+                    <p class="text-white font-weight-bold h5" style="margin: 0px;">Barangay Employement Service Unit</p>
+                </div>
+                
             </div>
-            {{-- <a href="{{ route('job.list') }}" class="logo"> <img src="{{ asset('/Logo.jpg') }}" style="width: 35px;" class="rounded-pill"> <b>Barangay Employement Service Unit</b></a> --}}
             <ul class="navbar-nav flex-row-reverse m-3 ml-5 h6">
                 <li class="nav-item dropdown ">
                     @if(Auth::user()->user_role == 1)

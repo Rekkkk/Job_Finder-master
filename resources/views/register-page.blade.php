@@ -94,7 +94,7 @@
                                                 An administrator monitored all of the information.
                                             </li>
                                             <li>
-                                                Posting falase or fake information may result in a banned or disabled account
+                                                Posting false or fake information may result in a banned or disabled account
                                             </li>
                                         </ul>  
                                     </div>
@@ -171,7 +171,7 @@
                                                 An administrator monitored all of the information.
                                             </li>
                                             <li>
-                                                Posting falase or fake information may result in a banned or disabled account
+                                                Posting false or fake information may result in a banned or disabled account
                                             </li>
                                         </ul>  
                                     </div>

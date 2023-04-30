@@ -55,7 +55,7 @@
         <div class="row mt-3">
             <div class="col-sm-6 text-center">
                 <img src="{{ asset('/images/Staff1.jpg') }}" class="rounded-circle"  width="210" height="200">
-                <h4 class="mt-1"><b>Rhou Catillo</b></h4>
+                <h4 class="mt-1"><b>Rhou Castillo</b></h4>
                 <h5>Staff</h5>
             </div>
             <div class="col-sm-6 text-center">

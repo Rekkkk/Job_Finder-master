@@ -95,16 +95,10 @@ Route::group(['prefix' => 'logged-in', 'middleware' => 'auth'], function()
     });
 
     Route::group(['middleware' => 'super.admin'], function () {
-
         Route::controller(AccountManagementController::class)->group(function () {
             Route::get('/admin-accounts', 'adminAccount')->name('admin.accounts');
             Route::get('/admin-accounts-accept/{user}', 'acceptAdmin')->name('accept.admin');
             Route::get('/admin-accounts-decline/{user}', 'declineAdmin')->name('decline.admin');
-            
-            // Route::get('/employer-accounts', 'employerAccount')->name('employer.account');
-            // Route::get('/disable-temp{user}', 'tempDisable')->name('temp.disable.account');
-            // Route::get('/disable-account{user}', 'disable')->name('disable.account');
-            // Route::get('/show_id/{user}', 'viewID')->name('show.id');
         });
     });
 
