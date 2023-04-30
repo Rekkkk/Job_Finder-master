@@ -17,16 +17,16 @@ Website: http://Alvarez.is/
 /* BASIC THEME CONFIGURATION */
 body {
     color: #000000;
-	background: #eaeaea;
-    font-family: 'Ruda', sans-serif;
+	/* background: #eaeaea; */
+    /* font-family: 'Ruda', sans-serif; */
     padding: 0px !important;
     margin: 0px !important;
     font-size:13px;
 }
 
-/* ul li {
-    list-style: none;
-} */
+.hover-effect:hover {
+    cursor: pointer;
+}
 ::-moz-selection {
     background: #4ECDC4;
     color: #fff;
@@ -204,7 +204,6 @@ a.logo span {
     color: white;
     float: left;
     padding-right: 15px;
-    margin-top: 20px;
 }
 
 .sidebar-toggle-box .fa-bars {
@@ -296,7 +295,13 @@ input[type=file]{
     border-radius: 50%;
     position: absolute;
     content: '';
-    left: -25%;
+    left: -15%;
+}
+.btn-admin{
+    font-size: 11px; 
+    padding-top: 4px; 
+    height: 27px; 
+    width:80px
 }
 @media only screen and (max-width: 1230px) {
     .div-logo{

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('user_id')->on('users');
             $table->boolean('is_disable')->default('0');
             $table->boolean('is_suspend')->default('0');
+            $table->integer('is_accepted')->default('0');
             $table->date('suspend_end')->nullable();
         });
        

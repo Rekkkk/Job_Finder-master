@@ -16,12 +16,16 @@
 </head>
 <body>
     <section id="container">
-        <header class="header black-bg">
-            <div class="sidebar-toggle-box">
-                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+        <header class="header black-bg d-flex justify-content-between">
+            <div class="d-flex align-items-center hover-effect" onclick="window.location='{{ route('home') }}';">
+                <div class="sidebar-toggle-box">
+                    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+                </div>
+                <img src="{{ asset('/Logo.jpg') }}" style="width: 35px;" class="rounded-pill mr-2"> 
+                <p class="text-white font-weight-bold h5" style="margin: 0px;">Barangay Employement Service Unit</p>
             </div>
-            <a href="{{ route('job.list') }}" class="logo"> <img src="{{ asset('/Logo.jpg') }}" style="width: 35px;" class="rounded-pill"> <b> Job Finder</b></a>
-            <ul class="navbar-nav flex-row-reverse m-3 h6">
+            {{-- <a href="{{ route('job.list') }}" class="logo"> <img src="{{ asset('/Logo.jpg') }}" style="width: 35px;" class="rounded-pill"> <b>Barangay Employement Service Unit</b></a> --}}
+            <ul class="navbar-nav flex-row-reverse m-3 ml-5 h6">
                 <li class="nav-item dropdown ">
                     @if(Auth::user()->user_role == 1)
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop-employer" data-toggle="dropdown" style="color:white">
@@ -46,7 +50,11 @@
         </header>
       <aside>
           <div id="sidebar" class="nav-collapse ">
-            <img src="/profile/{{Auth::user()->profile}}" id="logo" class="sidenav-img">
+            @if(Auth::user()->profile == null)
+                <img src="/profile/default.jpg" id="logo" class="sidenav-img" style="border-style: solid; border-color: #FFFFFF;">>
+            @else
+                <img src="/profile/{{Auth::user()->profile}}" id="logo" class="sidenav-img" style="border-style: solid; border-color: #FFFFFF;">
+            @endif
             <p class="h5 text-white text-center mt-2" style="text-transform: uppercase;">{{ Auth::user()->name }}</p>
             <img id="logo" src="{{ asset('/BRGY MAMATID LOGO.png') }}"  class="sidenav-img" style=" margin-top: 0px;">
             <!-- sidebar menu start-->

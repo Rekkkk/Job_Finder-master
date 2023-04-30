@@ -27,7 +27,7 @@
             <tbody id="myTable" style="cursor: pointer">
                 @foreach($listOfUser as $user)       
                 <tr>                            
-                        <td >{{ $user->user_id }}</td>
+                        <td >APL-{{ $user->user_id }}</td>
                         <td >{{ $user->name }}</td>
                         <td >{{ $user->email }}</td>    
                         <td class="h5 text-danger">{{ $user->num_reports }}</td>          

@@ -8,6 +8,7 @@
     .item-details{
         max-height: 175px;
     }
+
 </style>
 
 <div class="container-fluid p-4">
@@ -30,66 +31,48 @@
         <h1 style="font-size: 50px;">Welcome Job Finder Admin !</h1>
     </div>
   </div><br>
-  <div class="row mt-3">
-    <div class="col-lg-4 col-md-4 dashboard" >
-        <div class="card m-auto item-details" onclick="window.location='{{ route('report.post.management') }}';">
-            <div class="card-block">
-                <div class="d-flex p-2">
-                    <i class="fa fa-briefcase f-40"></i>  <h4 class="ml-2 mt-2 text-muted">Reported Jobs</h4>          
+    <div class="row">
+        <div class="col-lg">
+            <div class="dashboard-card card p-3 pt-4 px-4 position-relative" onclick="window.location='{{ route('report.post.management') }}';">
+                <div class="d-flex flex-wrap">
+                    <i class="fa fa-briefcase f-40"></i>  
+                    <h4 class="ml-2 mt-2 text-muted">Reported Jobs</h4> 
                 </div>
-                <div class="row align-items-center">
-                    <div class="col-12 text-right " >
-                        <h2>{{$reportedJobs}}</h2>
-                        
-                    </div>
-                    
-                    
-                </div>
-            </div>
-            <div class="card-footer bg-c-red">
-                <div class="row align-items-center">
-                </div>
-            </div>
+                <h2 class="text-right pt-2 pb-3">{{$reportedJobs}}</h2>  
+                <div class="bg-danger w-100 position-absolute fixed-bottom rounded-bottom" style="height: 30px;"></div>
+            </div>  
         </div>
-    </div>
-    <div class="col-lg-4 col-md-4 dashboard" >
-        <div class="card m-auto item-details" onclick="window.location='{{ route('employer.account') }}';">
-            <div class="card-block">
-                <div class="d-flex p-2">
-                    <i class="fa fa-users f-40"></i>  <h4 class="ml-2 mt-2 text-muted">No. of Employer Account</h4>          
+        <div class="col-lg">
+            <div class="dashboard-card card p-3 pt-4 px-4 position-relative" onclick="window.location='{{ route('employer.account') }}';" >
+                <div class="d-flex flex-wrap">
+                    <i class="fa fa-users f-40"></i>  
+                    <h4 class="ml-2 mt-2 text-muted">Employer Account</h4> 
                 </div>
-                <div class="row align-items-center">
-                    <div class="col-12 text-right " >
-                        <h2>{{$employer}}</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer bg-c-red">
-                <div class="row align-items-center">
-                </div>
-            </div>
+                <h2 class="text-right pt-2 pb-3">{{$reportedJobs}}</h2>  
+                <div class="bg-danger w-100 position-absolute fixed-bottom rounded-bottom" style="height: 30px;"></div>
+            </div>  
         </div>
-    </div>
-    <div class="col-lg-4 col-md-4 dashboard" >
-        <div class="card m-auto item-details" onclick="window.location='{{ route('applicant.accounts') }}';">
-            <div class="card-block">
-                <div class="d-flex p-2">
-                    <i class="fa fa-users f-40"></i>  <h4 class="ml-2 mt-2 text-muted">No. of Applicant Account</h4>          
+        <div class="col-lg">
+            <div class="dashboard-card card p-3 pt-4 px-4 position-relative" onclick="window.location='{{ route('applicant.accounts') }}';" >
+                <div class="d-flex flex-wrap">
+                    <i class="fa fa-users f-40"></i>
+                    <h4 class="ml-2 mt-2 text-muted">Applicant Account</h4> 
                 </div>
-                <div class="row align-items-center">
-                    <div class="col-12 text-right " >
-                        <h2>{{$applicant}}</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer bg-c-red">
-                <div class="row align-items-center">
-                </div>
-            </div>
+                <h2 class="text-right pt-2 pb-3">{{$reportedJobs}}</h2>  
+                <div class="bg-danger w-100 position-absolute fixed-bottom rounded-bottom" style="height: 30px;"></div>
+            </div>  
         </div>
+        @if(Auth::user()->user_role === 3)
+        <div class="col-lg">
+            <div class="dashboard-card card p-3 pt-4 px-4 position-relative" onclick="window.location='{{ route('admin.accounts') }}';" >
+                <div class="d-flex flex-wrap">
+                    <i class="fa fa-user f-40"></i>  
+                    <h4 class="ml-2 mt-2 text-muted">Admin Account</h4> 
+                </div>
+                <h2 class="text-right pt-2 pb-3">{{$reportedJobs}}</h2>  
+                <div class="bg-danger w-100 position-absolute fixed-bottom rounded-bottom" style="height: 30px;"></div>
+            </div>  
+        </div>
+        @endif
     </div>
-    
-  </div>
-
-
 @endsection

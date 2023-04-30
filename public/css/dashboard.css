@@ -4,6 +4,7 @@
     box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
     border: none;
     margin-bottom: 30px;
+    background-color: #eaeaea;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out; 
 }
@@ -80,7 +81,7 @@
       font-weight: 600;
       letter-spacing: 1px; }
     .card .card-block code {
-      background-color: #eee;
+      background-color: #eaeaea;
       margin: 5px;
       display: inline-block; }
     .card .card-block .dropdown-menu {

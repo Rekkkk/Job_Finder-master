@@ -12,10 +12,10 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-        <a class="navbar-brand d-flex" href="{{ route('home') }}">
-            <img src="{{ asset('/Logo.jpg') }}" class="rounded-circle" style="width:55px;">
-            <h4 class="ml-3 mt-3"><b>Barangay Employement Service Unit</b></h4>
-        </a>
+        <div class="d-flex align-items-center hover-effect" onclick="window.location='{{ route('home') }}';">
+            <img src="{{ asset('/Logo.jpg') }}" style="width: 35px;" class="rounded-pill mr-2"> 
+            <p class="text-white font-weight-bold h5" style="margin: 0px;">Barangay Employement Service Unit</p>
+        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
         </button>

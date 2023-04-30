@@ -17,30 +17,38 @@
 <body>
     <section id="container">
         <header class="header black-bg">
-            <div class="row">
-                <div class="col-2">
-                    <a href="{{ route('dashboard') }}" class="logo mt-3"> <img src="{{ asset('/Logo.jpg') }}" style="width: 35px;" class="rounded-pill"> <b> Job Finder</b></a>
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <div class="d-flex align-items-center hover-effect" onclick="window.location='{{ route('dashboard') }}';">
+                        <img src="{{ asset('/Logo.jpg') }}" style="width: 35px;" class="rounded-pill mr-2"> 
+                        <p class="text-white font-weight-bold h5" style="margin: 0px;">Barangay Employement Service Unit</p>
+                    </div>
+                   
                 </div>
-                <div class="col-8 m-auto">
-                    <ul class="nav justify-content-center" >
+                <div class="col-6 m-auto">
+                    <ul class="nav" >
                         <li class="nav-item text-center mr-1" style=" border: 2px solid #ffffff; border-radius: 10px; width: 165px; " >
                             <a class="nav-link" href="{{ route('dashboard') }}" style="color: white"><span><b>DASHBOARD</b></span></a>
                         </li>
                         <li class="nav-item text-center mr-1" style=" border: 2px solid #ffffff; border-radius: 10px; width: 165px;">
                             <a class="nav-link" href="{{ route('report.post.management') }}" style="color: white"><span><b>REPORTED POST</b></span></a>
                         </li>
-                        <li class="nav-item text-center mr-1" style=" border: 2px solid #ffffff; border-radius: 10px; width: 165px;">
-                            <a class="nav-link" href="{{ route('employer.account') }}" style="color: white "><span><b>EMPLOYER ACCOUNTS</b> </span></a>
-                        </li>
                         <li class="nav-item text-center" style=" border: 2px solid #ffffff; border-radius: 10px; width: 165px;">
-                            <a class="nav-link" href="{{ route('applicant.accounts') }}" style="color: white "><span><b>APPLICANT ACCOUNTS</b> </span></a>
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" style="color: white "><span><b>ACCOUNTS</b> </span></a>
+                                <div class="dropdown-menu text-center">
+                                    @if(Auth::user()->user_role === 3)
+                                    <a class="dropdown-item" href="{{ route('admin.accounts') }}">ADMINS</a>
+                                    @endif
+                                    <a class="dropdown-item" href="{{ route('employer.account') }}">EMPLOYERS</a>
+                                    <a class="dropdown-item" href="{{ route('applicant.accounts') }}">APPLICANTS</a>
+                                  </div>
+                            </div>
                         </li>
-                      </ul>
+                    </ul>
                 </div>
                 <div class="col-2">
-                    
                     <ul class="navbar-nav flex-row-reverse m-3 h6">
-                       
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:white">
                                 <i class="fa fa-user"></i>

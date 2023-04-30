@@ -71,7 +71,7 @@
                                             <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="password" id="form3Example4cd" name="confirm_password" class="form-control password-applicant" placeholder="Enter confirm password" minlength="8" required>
-                                                <label class="form-label h6" for="form3Example4cd"><b>Confirm your password</b></label>
+                                                <label class="form-label h6" for="form3Example4cd"><b>Confirm password</b></label>
                                             </div>
                                         </div>
                                         <div style="display: flex">
@@ -148,7 +148,7 @@
                                             <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="password" id="employer_confirm_password" name="confirm_password" class="form-control password" placeholder="Enter confirm password" minlength="8" required>
-                                                <label class="form-label h6" for="employer_confirm_password"><b>Confirm your password</b></label>
+                                                <label class="form-label h6" for="employer_confirm_password"><b>Confirm password</b></label>
                                             </div>
                                         </div>
                                         <div style="display: flex">
@@ -184,7 +184,7 @@
                             <div id="admin" class="tab-pane container fade"><br>
                         @endif
                             <div class="row justify-content-center">
-                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                <div class="col-md-10 col-lg-6 col-xl-7 order-2 order-lg-1">
                                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"><b>Admin Registration</b></p>
                                     @if($errors->any())
                                         <div class="alert alert-danger" role="alert">
@@ -215,16 +215,20 @@
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0 mr-1">
+                                                <input type="password" id="admin-password" name="password" class="form-control password" placeholder="Enter your password" minlength="8" required>
+                                                <label class="form-label h6" for="admin-password"><b>Password</b></label>
+                                            </div>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" id="employer_password" name="password" class="form-control password" placeholder="Enter your password" minlength="8" required>
-                                                <label class="form-label h6" for="employer_password"><b>Password</b></label>
+                                                <input type="password" id="admin-confirm_password" name="confirm_password" class="form-control password" placeholder="Enter confirm password" minlength="8" required>
+                                                <label class="form-label h6" for="admin-confirm_password"><b>Confirm password</b></label>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
                                             <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" id="employer_confirm_password" name="confirm_password" class="form-control password" placeholder="Enter confirm password" minlength="8" required>
-                                                <label class="form-label h6" for="employer_confirm_password"><b>Confirm your password</b></label>
+                                                <input type="text" id="admin-barangay" name="barangay" class="form-control" placeholder="Enter barangay name" required>
+                                                <label class="form-label h6" for="admin-barangay"><b>Barangay Name</b></label>
                                             </div>
                                         </div>
                                         <div style="display: flex">
@@ -237,7 +241,7 @@
                                         <a href="{{ route('login.page') }}" class="h6 ">Already have an account? Login</a>  
                                     </form>
                                 </div>
-                                <div class="col-md-10 col-lg-6 col-xl-7 order-1 order-lg-2" >
+                                <div class="col-md-10 col-lg-6 col-xl-5 order-1 order-lg-2" >
                                     <div class="text-center">
                                         <img src="{{ asset('/BRGY MAMATID LOGO.png') }}" width="200" height="180" alt="">
                                     </div>

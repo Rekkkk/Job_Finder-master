@@ -14,9 +14,9 @@
                     <div class="col">
                         <div class="text-center">
                             @if(Auth::user()->profile != null)
-                                <img src="/profile/{{Auth::user()->profile}}" alt="profile" id="profile" style="border-radius: 50%; width: 200px; height: 180px;">
+                                <img src="/profile/{{Auth::user()->profile}}" alt="profile" id="profile" style="border-style: solid; border-radius: 50%; width: 200px; height: 180px;">
                             @else
-                                <img src="/profile/default.jpg" alt="profile" id="profile" style="border-radius: 50%; width: 200px; height: 180px;">
+                                <img src="/profile/default.jpg" alt="profile" id="profile" style="border-style: solid; border-radius: 50%; width: 200px; height: 180px;">
                             @endif
                             <form action="{{ route('change.profile') }}" method="POST"  enctype="multipart/form-data">
                                 @csrf

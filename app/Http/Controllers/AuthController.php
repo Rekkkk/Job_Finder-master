@@ -35,6 +35,16 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if(Auth::attempt($credentials)) {
+            if(Auth::user()->user_role === 2){
+                if(Auth::user()->userStatus->is_accepted === 0){
+                    Auth::logout();
+                    return redirect()->route('login.page')->withInput()->withErrors(['msg' => 'Your account is still pending to approve']);
+                }
+                elseif(Auth::user()->userStatus->is_accepted === 3){
+                    Auth::logout();
+                    return redirect()->route('login.page')->withInput()->withErrors(['msg' => 'Your account is not approved']);
+                }
+            }
             if(Auth::user()->userStatus->is_disable == 1){
                 Auth::logout();
                 return redirect()->route('login.page')->withErrors(['msg' => 'Your account has banned']);
@@ -46,13 +56,14 @@ class AuthController extends Controller
                     ->update(['is_suspend' => 0,'suspend_end' => null]);
 
                      return redirect()->route('job.list');
-                }else{
+                }
+                else{
                     $suspendTime = Carbon::parse(Auth::user()->userStatus->suspend_end)->format('F d, Y');
                     Auth::logout();
                     return redirect()->route('login.page')->withErrors(['msg' => 'Your account are temporary ban until ' . $suspendTime]);
                 }
-                
-            }else{
+            }
+            else{
                 return redirect()->route('job.list');
             }
         }
@@ -137,8 +148,17 @@ class AuthController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+                'barangay' => $request->barangay,
                 'user_role' => 2
             ]);
+
+            foreach ($request->file('admin_id') as $imagefile) {
+                $image = new EmployerID;
+                $path = $imagefile->store('/', ['disk' =>   'employer_id']);
+                $image->file_name = $path;
+                $image->user_id = User::all()->last()->user_id;
+                $image->save();
+            }
         }
         else{ 
 
@@ -176,7 +196,6 @@ class AuthController extends Controller
 
     public function jobList(){
         if(Auth::check()){
-            
             if(Auth::user()->user_role == 2 || Auth::user()->user_role == 3  ){
                 return redirect()->route('dashboard');
             }

@@ -5,8 +5,8 @@
       @include('sweetalert::alert')
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card shadow-2-strong" style="border-radius: 1rem;">
-            <div class="card-body p-5 text-center">
+          <div class="card shadow-2-strong">
+            <div class="card-body p-5 text-center shadow-lg">
               <h2 class="mb-5"><b>Log-in</b></h2>
               @if($errors->any())
                 <div class="alert alert-danger" role="alert">

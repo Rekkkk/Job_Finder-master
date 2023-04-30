@@ -11,6 +11,30 @@ use RealRashid\SweetAlert\Facades\Alert;
 class AccountManagementController extends Controller
 {
 
+    public function adminAccount(){
+
+        $listOfUser = User::where('user_role', 2)->get();
+
+        return view ('/superadmin/accountmanagement/admin-account', compact('listOfUser'));
+    }
+
+    public function acceptAdmin(User $user){
+
+        UserStatus::where('user_id', $user->user_id)
+        ->update(['is_accepted' => 1]);
+
+        return back();
+
+    }
+
+    public function declineAdmin(User $user){
+
+        UserStatus::where('user_id', $user->user_id)
+        ->update(['is_accepted' => 3]);
+        return back();
+
+    }
+
     public function applicantAccount(){
 
         $listOfUser = User::where('user_role', 0)->get();
@@ -42,7 +66,6 @@ class AccountManagementController extends Controller
         
         return back();
 
-
     }
 
     public function disable(User $user){
@@ -61,6 +84,4 @@ class AccountManagementController extends Controller
         return back();
 
     }
-
-
 }

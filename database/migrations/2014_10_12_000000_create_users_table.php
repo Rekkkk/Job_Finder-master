@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password');
+            $table->string('barangay')->nullable();
             //0-applicant 1-employer 2-superadmin
             $table->integer('user_role');
             $table->integer('num_reports')->default(0);
