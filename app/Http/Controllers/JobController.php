@@ -218,6 +218,7 @@ class JobController extends Controller
             'job_title' => 'required',
             'company_name' => 'required',
             'company_address' => 'required',
+        
             'job_description' => 'required'
         ]);
 
@@ -225,6 +226,7 @@ class JobController extends Controller
             'job_title' => $request->job_title,
             'company_name' => $request->company_name,
             'company_address' => $request->company_address,
+            'job_type' => $request->job_type,
             'job_description' => $request->job_description,
             'user_id' => Auth::user()->user_id
         ]);

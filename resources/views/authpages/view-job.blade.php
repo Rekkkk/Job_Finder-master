@@ -24,7 +24,11 @@
                 
             </div>
         </div><br>
-
+        <div class="row">
+            <div class="col-12">
+                <p class="h4"><b>Job Type :</b>{{" ".$job->job_type}}</p>
+            </div>
+        </div><br>
         <div class="row">
             <div class="col-12">
                 <p class="h4"><b>Company Name :</b>{{" ".$job->company_name}}</p>

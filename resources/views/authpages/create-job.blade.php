@@ -16,7 +16,7 @@
                         @endif
                     </div>
                     <div class="col">
-                    <label class="title-detail">Company Name :  </label>
+                        <label class="title-detail">Company Name :  </label>
                         <input name="company_name" class="form-control" type="text" value="{{ old('company_name') }}" placeholder="Enter Company Name">
                         @if ($errors->has('company_name'))
                             <span class="text-danger">{{ $errors->first('company_name') }}</span>
@@ -32,6 +32,17 @@
                         @if ($errors->has('company_address'))
                             <span class="text-danger">{{ $errors->first('company_address') }}</span>
                         @endif
+                    </div>
+                    <div class="col">
+                        <label class="title-detail">Job Type :  </label>
+                        <select name="job_type" class="custom-select" required>
+                            <option selected value="">Please Select</option>
+                            <option value="Graduate Job">Graduate Job</option>
+                            <option value="Undergraduate Job">Undergraduate Job</option>
+                          </select>   
+                          @if ($errors->has('job_type'))
+                          <span class="text-danger">{{ $errors->first('job_type') }}</span>
+                      @endif                     
                     </div>
                 </div><br>
                 

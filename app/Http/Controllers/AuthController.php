@@ -75,19 +75,34 @@ class AuthController extends Controller
 
     public function registerPage(){
 
-        $name1 = "";
-        $name2 = "";
-        $name3 = "";
+        $lname1 = "";
+        $fname1 = "";
+        $mname1 = "";
+        $sname1 = "";
+        $lname2 = "";
+        $fname2 = "";
+        $mname2 = "";
+        $sname2 = "";
+        $lname3 = "";
+        $fname3 = "";
+        $mname3 = "";
+        $sname3 = "";
+
         $page = 1;
         
-        return view('/register-page',  compact('page', 'name1' , 'name2', 'name3'));
+        return view('/register-page',  compact(
+            'page', 'lname1' , 'fname1', 'mname1', 'sname1' , 
+            'lname2', 'fname2', 'mname2' , 'sname2', 
+            'lname3', 'fname3' , 'mname3', 'sname3'
+        ));
 
     }
 
     public function register(Request $request){
-
         $request->validate([
-            'name' => 'required',
+            'lname' => 'required',
+            'fname' => 'required',
+            'mname' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8',
             'confirm_password' => 'required|min:8|same:password' 
@@ -104,19 +119,35 @@ class AuthController extends Controller
         if($request->employer_id != null){
             if($emailUnique){
 
-                Alert::html('error','Your Email is taken by others please use unique email !', 'error');
+                Alert::html('error','Your Email is taken by others please use unique email !', 'error'); 
 
-                $name1 = "";
-                $name2 = $request->name;
-                $name3 = "";
-                
+                $lname1 = "";
+                $fname1 = "";
+                $mname1 = "";
+                $sname1 = "";
+                $lname2 = $request->lname;
+                $fname2 = $request->fname;
+                $mname2 = $request->mname;
+                $sname2 = $request->sname;
+                $lname3 = "";
+                $fname3 = "";
+                $mname3 = "";
+                $sname3 = "";
+        
                 $page = 2;
                 
-                return view('/register-page',  compact('page', 'name1', 'name2', 'name3'));    
+                return view('/register-page',  compact(
+                    'page', 'lname1' , 'fname1', 'mname1', 'sname1' , 
+                    'lname2', 'fname2', 'mname2' , 'sname2', 
+                    'lname3', 'fname3' , 'mname3', 'sname3'
+                ));
             }
         
             User::create([
-                'name' => $request->name,
+                'lname' => $request->lname,
+                'fname' => $request->fname,
+                'mname' => $request->mname,
+                'sname' => $request->sname,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'user_role' => 1,
@@ -135,17 +166,33 @@ class AuthController extends Controller
 
                 Alert::html('error','Your Email is taken by others please use unique email !', 'error');
 
-                $name1 = "";
-                $name2 = "";
-                $name3 = $request->name;
-                $page = 3;
+                $lname1 = "";
+                $fname1 = "";
+                $mname1 = "";
+                $sname1 = "";
+                $lname2 = "";
+                $fname2 = "";
+                $mname2 = "";
+                $sname2 = "";
+                $lname3 = $request->lname;
+                $fname3 = $request->fname;
+                $mname3 = $request->mname;
+                $sname3 = $request->sname;
+
+                $page = 2;
                 
-        
-                return view('/register-page',  compact('page', 'name1', 'name2', 'name3'));
+                return view('/register-page',  compact(
+                    'page', 'lname1' , 'fname1', 'mname1', 'sname1' , 
+                    'lname2', 'fname2', 'mname2' , 'sname2', 
+                    'lname3', 'fname3' , 'mname3', 'sname3'
+                ));
 
             }
             User::create([
-                'name' => $request->name,
+                'lname' => $request->lname,
+                'fname' => $request->fname,
+                'mname' => $request->mname,
+                'sname' => $request->sname,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'barangay' => $request->barangay,
@@ -164,24 +211,37 @@ class AuthController extends Controller
 
             if($emailUnique){
                 Alert::html('error','Your Email is taken by others please use unique email !', 'error');
-                $name1 = $request->name;
-                $name2 = "";
-                $name3 = "";
-                $page = 1;
+               
+                $lname1 = $request->lname;
+                $fname1 = $request->fname;
+                $mname1 = $request->mname;
+                $sname1 = $request->sname;
+                $lname2 = "";
+                $fname2 = "";
+                $mname2 = "";
+                $sname2 = "";
+                $lname3 = "";
+                $fname3 = "";
+                $mname3 = "";
+                $sname3 = "";
                 
-                return view('/register-page',  compact('page', 'name1', 'name2', 'name3'));
-
+                return view('/register-page',  compact(
+                    'page', 'lname1' , 'fname1', 'mname1', 'sname1' , 
+                    'lname2', 'fname2', 'mname2' , 'sname2', 
+                    'lname3', 'fname3' , 'mname3', 'sname3'
+                ));
             }
             User::create([
-                'name' => $request->name,
+                'lname' => $request->lname,
+                'fname' => $request->fname,
+                'mname' => $request->mname,
+                'sname' => $request->sname,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'user_role' => 0
             ]);
            
         }
-
-        
         UserStatus::create([
             'user_id' => User::all()->last()->user_id,
             'is_disable' => 0,
@@ -269,11 +329,16 @@ class AuthController extends Controller
     public function changeName(Request $request){
 
         $request->validate([
-            'name' => 'required',
+            'lname' => 'required',
+            'fname' => 'required'
+            
         ]);
 
         $userLogin = User::find(Auth::user()->user_id);
-        $userLogin->name = $request->name;
+        $userLogin->lname = $request->lname;
+        $userLogin->fname = $request->fname;
+        $userLogin->mname = $request->mname;
+        $userLogin->sname = $request->sname;
         $userLogin->save();
 
         Alert::success('Success', 'Name Change Successfully !');

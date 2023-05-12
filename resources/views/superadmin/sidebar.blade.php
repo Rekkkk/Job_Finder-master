@@ -52,7 +52,7 @@
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color:white">
                                 <i class="fa fa-user"></i>
-                                <span class="ml-2">{{Auth::user()->name}}</span>
+                                <span class="ml-2">{{Auth::user()->lname}}</span>
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{{ route('edit.account.page') }}">

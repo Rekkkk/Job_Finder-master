@@ -2,11 +2,11 @@
 
 @section('content')
 @include('sweetalert::alert')
-<div class="container h-100">
+<div class="container-fluid h-100">
     <div class="row d-flex justify-content-center align-items-center h-100 mt-5">
-        <div class="col-lg-12 col-xl-11">
+        <div class="col-lg-12 col-xl-10">
             <div class="card text-black" style="border-radius: 25px;">
-                <div class="card-body p-md-5">
+                <div class="card-body p-md-4">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             @if($page == 1)
@@ -47,28 +47,38 @@
                                     <form action="{{ route('register') }}" id="applicant_form" method="POST" class="mx-1 mx-md-4">
                                         @csrf
                                         <div class="d-flex flex-row align-items-center mb-2">
-                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="text" id="form3Example1c" name="name" class="form-control" value="{{ $name1 }}" placeholder="Enter your Name" required>
-                                                <label class="form-label h6" for="form3Example1c"><b>Your Name</b> </label>
+                                            <div class="form-outline mr-1 flex-fill mb-0">
+                                                <input type="text" id="form3Example1c" name="lname" class="form-control" value="{{ $lname1 }}" placeholder="Enter Last Name" required>
+                                                <label class="form-label h6" for="form3Example1c"><b>Last Name</b> </label>
+                                            </div>
+                                            <div class="form-outline ml-1 flex-fill mb-0">
+                                                <input type="text" id="form3Example1c" name="fname" class="form-control" value="{{ $fname1 }}" placeholder="Enter First Name" required>
+                                                <label class="form-label h6" for="form3Example1c"><b>First Name</b> </label>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline mr-1 flex-fill mb-0">
+                                                <input type="text" id="form3Example1c" name="mname" class="form-control" value="{{ $mname1 }}" placeholder="Enter Middle Name" required>
+                                                <label class="form-label h6" for="form3Example1c"><b>Middle Name</b> </label>
+                                            </div>
+                                            <div class="form-outline ml-1 flex-fill mb-0">
+                                                <input type="text" id="form3Example1c" name="sname" class="form-control" value="{{ $sname1 }}" placeholder="Enter Suffix">
+                                                <label class="form-label h6" for="form3Example1c"><b>Suffix <span class="text-danger">(Optional)</span></b> </label>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center mb-2">
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="email" id="form3Example3c" name="email" class="form-control" placeholder="Enter your Email" required >
                                                 <label class="form-label h6" for="form3Example3c"><b>Your Email</b></label>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
-                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="password" id="form3Example4c" name="password" class="form-control password-applicant" placeholder="Enter your password" minlength="8" required>
                                                 <label class="form-label h6" for="form3Example4c"><b>Password</b></label>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
-                                            <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="password" id="form3Example4cd" name="confirm_password" class="form-control password-applicant" placeholder="Enter confirm password" minlength="8" required>
                                                 <label class="form-label h6" for="form3Example4cd"><b>Confirm password</b></label>
@@ -117,35 +127,44 @@
                                     @endif
                                     <form action="{{ route('register') }}" id="employers_form"enctype="multipart/form-data" method="POST"  class="mx-1 mx-md-4">
                                         @csrf
-                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input " id="customFile" name="employer_id[]" accept="image/*" multiple required>
                                                 <label class="custom-file-label" for="customFile">Upload your ID</label>
                                             </div>
                                         <label class="form-label h6 mb-3"><b>Your Company ID/ Company Profile</b></label>
                                         <div class="d-flex flex-row align-items-center mb-2">
-                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="text" id="form3Example1c" name="name" class="form-control" value="{{ $name2 }}" placeholder="Enter your Name" required>
-                                                <label class="form-label h6" for="form3Example1c"><b>Your Name</b> </label>
+                                            <div class="form-outline mr-1 flex-fill mb-0">
+                                                <input type="text" id="form3Example1c" name="lname" class="form-control" value="{{ $lname2 }}" placeholder="Enter Last Name" required>
+                                                <label class="form-label h6" for="form3Example1c"><b>Last Name</b> </label>
+                                            </div>
+                                            <div class="form-outline ml-1 flex-fill mb-0">
+                                                <input type="text" id="form3Example1c" name="fname" class="form-control" value="{{ $fname2 }}" placeholder="Enter First Name" required>
+                                                <label class="form-label h6" for="form3Example1c"><b>First Name</b> </label>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline mr-1 flex-fill mb-0">
+                                                <input type="text" id="form3Example1c" name="mname" class="form-control" value="{{ $mname2 }}" placeholder="Enter Middle Name" required>
+                                                <label class="form-label h6" for="form3Example1c"><b>Middle Name</b> </label>
+                                            </div>
+                                            <div class="form-outline ml-1 flex-fill mb-0">
+                                                <input type="text" id="form3Example1c" name="sname" class="form-control" value="{{ $sname2 }}" placeholder="Enter Suffix">
+                                                <label class="form-label h6" for="form3Example1c"><b>Suffix <span class="text-danger">(Optional)</span></b> </label>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center mb-2">
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="email" id="form3Example3c" name="email" class="form-control" placeholder="Enter your Email" required>
                                                 <label class="form-label h6" for="form3Example3c"><b>Your Email</b></label>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
-                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="password" id="employer_password" name="password" class="form-control password" placeholder="Enter your password" minlength="8" required>
                                                 <label class="form-label h6" for="employer_password"><b>Password</b></label>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
-                                            <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="password" id="employer_confirm_password" name="confirm_password" class="form-control password" placeholder="Enter confirm password" minlength="8" required>
                                                 <label class="form-label h6" for="employer_confirm_password"><b>Confirm password</b></label>
@@ -193,28 +212,38 @@
                                     @endif
                                     <form action="{{ route('register') }}" id="employers_form"enctype="multipart/form-data" method="POST"  class="mx-1 mx-md-4">
                                         @csrf
-                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input " id="customFile" name="admin_id[]" accept="image/*" multiple required>
                                                 <label class="custom-file-label" for="customFile">Upload your ID</label>
                                             </div>
                                         <label class="form-label h6 mb-3"><b>Your Barangay ID</b></label>
                                         <div class="d-flex flex-row align-items-center mb-2">
-                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="text" id="form3Example1c" name="name" class="form-control" value="{{ $name3 }}" placeholder="Enter your Name" required>
-                                                <label class="form-label h6" for="form3Example1c"><b>Your Name</b> </label>
+                                            <div class="form-outline mr-1 flex-fill mb-0">
+                                                <input type="text" id="form3Example1c" name="lname" class="form-control" value="{{ $lname3 }}" placeholder="Enter Last Name" required>
+                                                <label class="form-label h6" for="form3Example1c"><b>Last Name</b> </label>
+                                            </div>
+                                            <div class="form-outline ml-1 flex-fill mb-0">
+                                                <input type="text" id="form3Example1c" name="fname" class="form-control" value="{{ $fname3 }}" placeholder="Enter First Name" required>
+                                                <label class="form-label h6" for="form3Example1c"><b>First Name</b> </label>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
-                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline mr-1 flex-fill mb-0">
+                                                <input type="text" id="form3Example1c" name="mname" class="form-control" value="{{ $mname3 }}" placeholder="Enter Middle Name" required>
+                                                <label class="form-label h6" for="form3Example1c"><b>Middle Name</b> </label>
+                                            </div>
+                                            <div class="form-outline ml-1 flex-fill mb-0">
+                                                <input type="text" id="form3Example1c" name="sname" class="form-control" value="{{ $sname3 }}" placeholder="Enter Suffix Name">
+                                                <label class="form-label h6" for="form3Example1c"><b>Suffix <span class="text-danger">(Optional)</span></b> </label>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center mb-2">
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="email" id="form3Example3c" name="email" class="form-control" placeholder="Enter your Email" required>
                                                 <label class="form-label h6" for="form3Example3c"><b>Your Email</b></label>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
-                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0 mr-1">
                                                 <input type="password" id="admin-password" name="password" class="form-control password" placeholder="Enter your password" minlength="8" required>
                                                 <label class="form-label h6" for="admin-password"><b>Password</b></label>
@@ -225,7 +254,6 @@
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-2">
-                                            <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="text" id="admin-barangay" name="barangay" class="form-control" placeholder="Enter barangay name" required>
                                                 <label class="form-label h6" for="admin-barangay"><b>Barangay Name</b></label>

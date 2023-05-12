@@ -21,6 +21,11 @@
         </div><br>
         <div class="row">
             <div class="col-12">
+                <p class="h4"><b>Job Type :</b>{{" ".$job->job_type}}</p>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-12">
                 <h6 style="overflow: auto; font-size: 19px; height: 200px;" >{!! nl2br(e($job->job_description))!!}</h6>
             </div>
         </div><br><br>

@@ -45,7 +45,7 @@
     
     </section>
 
-    <footer class="text-white text-center text-lg-start" style="background-color: #23242a;">
+    <footer class="text-white text-center text-lg-start mt-2" style="background-color: #23242a;">
     <div class="container p-4">
         <div class="row mt-4">
             <div class="col-lg-12 col-md-12 mb-4 mb-md-0">

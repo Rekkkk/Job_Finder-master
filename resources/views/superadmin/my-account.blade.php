@@ -5,21 +5,41 @@
     <div class="container-fluid" style="padding: 65px 80px 20px 80px;">
         <form action="{{ route('edit.name') }}" method="POST">
             @csrf
-            <div class="m-auto" style="width: 350px">
+            <div class="m-auto" style="max-width: 350px">
                 <div class="row mt-2">
                     <div class="col-lg-12 text-center">
                         <label class="modal-text h5 ">Edit My Account Details</label>
-                    
                     </div>                              
                 </div>
                 <div class="row mt-2">
                     <div class="col-lg-12">
-                        <label class="modal-text">Name : </label>
-                        <input type="text" name="name" class="form-control" value="{{ Auth::user()->name }}">
+                        <label class="modal-text">Last Name : </label>
+                        <input type="text" name="lname" class="form-control" value="{{ Auth::user()->lname }}" required>
                         @if ($errors->has('name'))
                             <span class="text-danger">{{ $errors->first('name') }}</span>
                         @endif
-                    </div>                              
+                    </div>
+                    <div class="col-lg-12">
+                        <label class="modal-text">First Name : </label>
+                        <input type="text" name="fname" class="form-control" value="{{ Auth::user()->fname }}" required>
+                        @if ($errors->has('name'))
+                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                        @endif
+                    </div>         
+                    <div class="col-lg-12">
+                        <label class="modal-text">Middle Name : </label>
+                        <input type="text" name="mname" class="form-control" value="{{ Auth::user()->mname }}">
+                        @if ($errors->has('name'))
+                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                        @endif
+                    </div>         
+                    <div class="col-lg-12">
+                        <label class="modal-text">Suffix : </label>
+                        <input type="text" name="sname" class="form-control" value="{{ Auth::user()->sname }}">
+                        @if ($errors->has('name'))
+                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                        @endif
+                    </div>                               
                 </div><br>
                 <div class="row">
                     <div class="col-md-12 text-right">

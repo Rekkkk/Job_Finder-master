@@ -35,7 +35,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop-applicant" data-toggle="dropdown" style="color:white">
                     @endif
                          <i class="fa fa-user"></i>
-                         <span class="ml-2">{{Auth::user()->name}}</span>
+                         <span class="ml-2">{{Auth::user()->lname}}</span>
                     </a>
                     <div class="dropdown-menu text-center">
                         <a class="dropdown-item" href="{{ route('edit.account.page') }}">
@@ -57,7 +57,7 @@
             @else
                 <img src="/profile/{{Auth::user()->profile}}" id="logo" class="sidenav-img" style="border-style: solid; border-color: #FFFFFF;">
             @endif
-            <p class="h5 text-white text-center mt-2" style="text-transform: uppercase;">{{ Auth::user()->name }}</p>
+            <p class="h5 text-white text-center mt-2" style="text-transform: uppercase;">{{ Auth::user()->lname . " ". Auth::user()->fname. " " .Auth::user()->mname }}</p>
             <img id="logo" src="{{ asset('/BRGY MAMATID LOGO.png') }}"  class="sidenav-img" style=" margin-top: 0px;">
             <!-- sidebar menu start-->
               <ul class="sidebar-menu list-unstyled" id="nav-accordion">

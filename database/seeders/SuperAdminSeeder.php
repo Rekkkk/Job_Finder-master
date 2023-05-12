@@ -18,7 +18,10 @@ class SuperAdminSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Super admin',
+            'lname' => 'admin',
+            'fname' => 'admin',
+            'mname' => 'admin',
+            'sname' => 'admin',
             'profile' => null,
             'email' => 'SuperAdmin@admin.com',
             'password' => bcrypt('admin'),
