@@ -38,7 +38,7 @@
                         <select name="job_type" class="custom-select" required>
                             <option selected value="">Please Select</option>
                             <option value="Graduated Job" class="job_type">Graduated Job</option>
-                            <option value="Undergraduated Job" class="job_type">Undergraduated Job</option>
+                            <option value="Undergraduate Job" class="job_type">Undergraduate Job</option>
                           </select>   
                           @if ($errors->has('job_type'))
                           <span class="text-danger">{{ $errors->first('job_type') }}</span>
