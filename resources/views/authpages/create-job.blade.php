@@ -37,7 +37,7 @@
                         <label class="title-detail">Job Type :  </label>
                         <select name="job_type" class="custom-select" required>
                             <option selected value="">Please Select</option>
-                            <option value="Graduate Job">Graduate Job</option>
+                            <option value="Graduated Job">Graduate Job</option>
                             <option value="Undergraduate Job">Undergraduate Job</option>
                           </select>   
                           @if ($errors->has('job_type'))

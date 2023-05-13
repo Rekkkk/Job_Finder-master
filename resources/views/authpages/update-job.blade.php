@@ -33,6 +33,17 @@
                             <span class="text-danger">{{ $errors->first('company_address') }}</span>
                         @endif
                     </div>
+                    <div class="col">
+                        <label class="title-detail">Job Type :  </label>
+                        <select name="job_type" class="custom-select" required>
+                            <option selected value="">Please Select</option>
+                            <option value="Graduated Job" class="job_type">Graduate Job</option>
+                            <option value="Undergraduated Job" class="job_type">Undergraduate Job</option>
+                          </select>   
+                          @if ($errors->has('job_type'))
+                          <span class="text-danger">{{ $errors->first('job_type') }}</span>
+                      @endif                     
+                    </div>
                 </div><br>
                 
                 <div class="row">
@@ -52,4 +63,16 @@
             </form>
         </div>
     </div>
+    <script>
+        $(document).ready(function(){
+            var jobType = $('.job_type');
+            for(let i = 0; i <= jobType.length; i++){    
+                let jobTypeIndex = String(jobType[i].innerHTML);
+                if(jobTypeIndex == {!! json_encode($job->job_type) !!}){
+                    $('.job_type').eq(i).attr('selected', '');
+                    break;
+                }
+            }
+        });
+    </script>
 @endsection

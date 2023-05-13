@@ -12,10 +12,10 @@
                     <a class="nav-link text-black font-weight-bold active" data-toggle="tab" href="#all-jobs">ALL JOBS</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link text-black font-weight-bold" data-toggle="tab" href="#graduate">GRADUATE JOBS</a>
+                    <a class="nav-link text-black font-weight-bold" data-toggle="tab" href="#graduate">GRADUATED JOBS</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link text-black font-weight-bold" data-toggle="tab" href="#undergraduate">UNDERGRADUATE JOBS</a>
+                    <a class="nav-link text-black font-weight-bold" data-toggle="tab" href="#undergraduate">UNDERGRADUATED JOBS</a>
                     </li>
                 </ul>
                 <!-- Tab panes -->
@@ -54,7 +54,7 @@
                             </thead>
                             <tbody id="myTable" style="cursor: pointer">
                                 @foreach($allJobs as $job)  
-                                @if($job->job_type === "Graduate Job")
+                                @if($job->job_type === "Graduated Job")
                                     <tr onclick="window.location='{{ route('view.job', $job) }}';">                           
                                         <td style="font-size: 18px;">{{ $job->job_title }}</td>
                                         <td style="font-size: 18px;">{{ $job->company_name }}</td>
@@ -78,7 +78,7 @@
                             </thead>
                             <tbody id="myTable" style="cursor: pointer">
                                 @foreach($allJobs as $job)   
-                                @if($job->job_type === "Undergraduate Job")    
+                                @if($job->job_type === "Undergraduated Job")    
                                 <tr onclick="window.location='{{ route('view.job', $job) }}';">                           
                                         <td style="font-size: 18px;">{{ $job->job_title }}</td>
                                         <td style="font-size: 18px;">{{ $job->company_name }}</td>

@@ -260,7 +260,6 @@ class JobController extends Controller
 
     public function updateJob(Request $request, Job $job){
 
-        // dd($request->company_address);
         $job = Job::find($job->job_id);
 
         $request->validate([
@@ -273,7 +272,9 @@ class JobController extends Controller
         $job->job_title = $request->job_title;
         $job->company_name = $request->company_name;
         $job->company_address = $request->company_address;
+        $job->job_type = $request->job_type;
         $job->job_description = $request->job_description;
+        
 
         $job->save();
 
