@@ -14,9 +14,10 @@
                     <form action="{{ route('change.profile') }}" method="POST"  enctype="multipart/form-data">
                         @csrf
                         <input type="file" class="mt-3" name="profile" onchange="loadFile(event)" accept="image/*" id="file" accept=""> 
-                        <input type="submit" class="btn btn-success" id="" value="Save" name="" id="">
+                        <input type="submit" class="btn btn-success" id="" value="Save">
+                        <input type="button" class="btn btn-danger" id="cancel-upload" value="Cancel">
                     </form>
-
+                   
                 </div>
             </div>
         </div>
@@ -113,9 +114,10 @@
     </div>
 <script>
     var loadFile = function (event) {
-            var image = document.getElementById("profile");
-            image.src = URL.createObjectURL(event.target.files[0]);
+        var image = document.getElementById("profile");
+        image.src = URL.createObjectURL(event.target.files[0]);
     };
+    
     $(document).ready(function(){
         $("#show-password").click(function(){
             if("password"== $(".password").attr("type")){
@@ -124,6 +126,21 @@
                 $(".password").prop("type", "password");
             }
         });
+        $("#cancel-upload").click(function(){
+            var image = document.getElementById("profile");
+            if({!! json_encode(Auth::user()->profile) !!} === null){
+                image.src = "/profile/default.jpg";
+                var file = document.getElementById("file");
+                file.value = "";
+                
+            }else{
+                image.src = "/profile/" + {!! json_encode(Auth::user()->profile) !!};
+                var file = document.getElementById("file");
+                file.value = "";
+            }
+            
+        
+    });
     });
 </script>
 
