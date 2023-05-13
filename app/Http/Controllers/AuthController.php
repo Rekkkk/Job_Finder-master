@@ -225,7 +225,7 @@ class AuthController extends Controller
                 $mname3 = "";
                 $sname3 = "";
                 
-                $page = 1
+                $page = 1;
                 return view('/register-page',  compact(
                     'page', 'lname1' , 'fname1', 'mname1', 'sname1' , 
                     'lname2', 'fname2', 'mname2' , 'sname2', 
